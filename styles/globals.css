@@ -105,3 +105,13 @@ a {
     color-scheme: dark;
   }
 } */
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+a,ol,ul{
+  text-decoration: none;
+  color: black;
+}
