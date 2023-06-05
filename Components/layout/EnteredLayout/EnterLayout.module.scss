@@ -6,6 +6,10 @@
   align-items: center;
   .left {
     height: 100%;
+    .imagepart{
+        height: inherit;
+    }
+
   }
 //   .right {
 //     // background-color: blue;
