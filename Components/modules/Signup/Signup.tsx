@@ -1,9 +1,15 @@
-import { ChangeEvent, useContext, useEffect, useState } from "react";
-import styles from "./Signup.module.scss";
+import { ChangeEvent, FormEvent, useContext, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+//types
 import { IUser, Itouch, Ierror, DataContext } from "@/Context/ContextProvider";
+//style
+import styles from "./Signup.module.scss";
+//function
 import { validate } from "@/Context/Services/Functions/validate";
+//primereact
+import {Toast} from "primereact/toast"
 const Signup = () => {
+    const toast = useRef<Toast>(null);
   const [UserData, setUserData] = useState<IUser>({
     FName: "",
     LName: "",
@@ -31,10 +37,47 @@ const Signup = () => {
   const touchHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setTouch({ ...touch, [event.target.name]: true });
   };
+  const showError = () => {
+    console.log("here")
+    toast.current?.show({
+      severity: "error",
+      summary: "Error",
+      detail: "invalid data",
+      life: 3000,
+    });
+  };
+  const showSuccess = () => {
+    toast.current?.show({
+      severity: "success",
+      summary: "Success",
+      detail: "Signed in successfully",
+      life: 3000,
+    });
+  };
+  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!Object.keys(errors).length) {
+      console.log(UserData);
+      showSuccess()
+    } else {
+        console.log("er")
+      showError()
+      setTouch({
+        FName: true,
+        LName: true,
+        email: true,
+        password: true,
+        confirmPassword: true,
+        isAccepted: true,
+      });
+    }
+  };
   return (
     <div className={`${styles.SignupContainer}`}>
+        <Toast ref={toast} />
       <h2>Welcome!</h2>
-      <form className={`${styles.form} grid flex-column`}>
+      <form className={`${styles.form} grid flex-column`} onSubmit={submitHandler}>
         <div className="col-12 flex flex-wrap px-0">
           <div className={`${styles.inputwrapper} col-12 xl:col-6`}>
             <label>First Name</label>
