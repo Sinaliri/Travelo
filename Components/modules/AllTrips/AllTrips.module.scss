@@ -1,0 +1,35 @@
+@import "../../../assets/variables";
+.TripsContainer {
+  border: 1px solid black;
+  border-radius: 50px 50px 0 0;
+  border-bottom: none;
+  background-color: #fff;
+  min-height: 200px;
+  position: absolute;
+  bottom: -138px;
+  // padding-top: 70px auto !important;
+  .searchOptions {
+    margin: 70px 30px !important;
+    span {
+        margin:10px;
+      font: {
+        size: 24px;
+        weight: 400;
+      }
+    }
+    .buttonContainer {
+      .p-button {
+      }
+      .resultButton {
+        font: {
+          size: 20px !important;
+          weight: 400;
+        }
+        background-color: $CardColor;
+        width: 180px;
+        height: 50px;
+        border: none;
+      }
+    }
+  }
+}
