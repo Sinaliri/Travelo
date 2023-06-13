@@ -1,4 +1,11 @@
-import { ChangeEvent, FormEvent, useContext, useEffect, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Link from "next/link";
 //types
 import { IUser, Itouch, Ierror, DataContext } from "@/Context/ContextProvider";
@@ -7,9 +14,9 @@ import styles from "./Signup.module.scss";
 //function
 import { validate } from "@/Context/Services/Functions/validate";
 //primereact
-import {Toast} from "primereact/toast"
+import { Toast } from "primereact/toast";
 const Signup = () => {
-    const toast = useRef<Toast>(null);
+  const toast = useRef<Toast>(null);
   const [UserData, setUserData] = useState<IUser>({
     FName: "",
     LName: "",
@@ -38,7 +45,7 @@ const Signup = () => {
     setTouch({ ...touch, [event.target.name]: true });
   };
   const showError = () => {
-    console.log("here")
+    console.log("here");
     toast.current?.show({
       severity: "error",
       summary: "Error",
@@ -59,10 +66,10 @@ const Signup = () => {
 
     if (!Object.keys(errors).length) {
       console.log(UserData);
-      showSuccess()
+      showSuccess();
     } else {
-        console.log("er")
-      showError()
+      console.log("er");
+      showError();
       setTouch({
         FName: true,
         LName: true,
@@ -75,9 +82,12 @@ const Signup = () => {
   };
   return (
     <div className={`${styles.SignupContainer}`}>
-        <Toast ref={toast} />
+      <Toast ref={toast} />
       <h2>Welcome!</h2>
-      <form className={`${styles.form} grid flex-column`} onSubmit={submitHandler}>
+      <form
+        className={`${styles.form} grid flex-column`}
+        onSubmit={submitHandler}
+      >
         <div className="col-12 flex flex-wrap px-0">
           <div className={`${styles.inputwrapper} col-12 xl:col-6`}>
             <label>First Name</label>

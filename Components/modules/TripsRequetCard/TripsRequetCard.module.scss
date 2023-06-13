@@ -1,0 +1,77 @@
+@import "../../../assets/variables";
+@import "../../../assets/mixins";
+.RequestCard {
+  background-color: $FormBG;
+  margin: 20px;
+  border-radius: 50px;
+  //   min-height: 295px;
+  .RequestDetail {
+    padding: 26px 63px;
+    .left {
+      .ownerImage {
+        width: 108px;
+        height: 108px;
+        background-color: #fff;
+        border-radius: 50%;
+      }
+      .ownerPrice {
+        margin: 30px 0;
+        @include font(24px, 400);
+      }
+      .rate {
+        padding: 0 10px;
+        .like {
+          span {
+            @include font(20px, 400);
+
+            vertical-align: 1px;
+          }
+          // vertical-align: 50px;
+          // margin-right: 30px;
+        }
+        .dislike {
+          span {
+            @include font(20px, 400);
+
+            vertical-align: 3px;
+          }
+          // vertical-align: 50px;
+        }
+      }
+    }
+    .right {
+      // background-color: red;
+      padding: 25px;
+      .Destination {
+        margin-bottom: 40px;
+        @include font(24px, 400);
+      }
+      .TripsOwner {
+        @include font(20px, 400);
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .RequestDescription {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    padding: 50px;
+    .Description {
+      @include font(20px, 400);
+      margin-left: 12px;
+      margin-bottom: 33px;
+    }
+    p{
+        @include font(16px, 400);
+
+    }
+  }
+  .RequestButton{
+    padding: 40px;
+    .sendButton{
+        background-color: #fff;
+        color: #000;
+        border: none;
+    }
+  }
+}
