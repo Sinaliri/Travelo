@@ -12,7 +12,7 @@ const RightSection = () => {
     return (
         <div className={`RightSection ml-auto px-3 py-2 overflow-auto custom-scrollbar ${styles.RightSection}`
         }
-            style={{ width: 'fit-content', height: '700px', background: '#424642' }}>
+            style={{ width: 'fit-content', background: '#424642' }}>
             <h4 className='RightSection__title text-white py-1 px-2 my-2 font-medium text-sm'
                 style={{ background: '#000000', borderRadius: '50px' }}> meet our best drivers! </h4>
 
