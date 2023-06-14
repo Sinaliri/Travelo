@@ -1,0 +1,23 @@
+@import "../../../assets/variables";
+.searchOptions {
+    margin: 70px 30px !important;
+    span {
+      margin: 10px;
+      font: {
+        size: 24px;
+        weight: 400;
+      }
+    }
+    .buttonContainer {
+      .resultButton {
+        font: {
+          size: 20px !important;
+          weight: 400;
+        }
+        background-color: $CardColor;
+        width: 180px;
+        height: 50px;
+        border: none;
+      }
+    }
+  }

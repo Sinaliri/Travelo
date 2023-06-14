@@ -1,0 +1,35 @@
+@import "../../../assets/variables";
+.AvailableTripsContainer {
+  .banner {
+    width: 100vw;
+    background-color: $availableBanner;
+    height: 540px;
+    padding: 111px 104px;
+    h2 {
+      position: inherit;
+      font: {
+        size: 36px;
+        weight: 400;
+      }
+      margin-bottom: 49px;
+    }
+    .Contact {
+      position: inherit;
+
+      h3 {
+        position: inherit;
+        font: {
+          size: 24px;
+          weight: 400;
+        }
+      }
+      .contactuspic {
+        position: inherit;
+      }
+    }
+    .bannerImg {
+      right: 0;
+      top: 0;
+    }
+  }
+}
