@@ -1,26 +1,15 @@
 import React, { useState } from 'react';
 import GallerySection from '../GallerySection/GallerySection';
 
-const Gallery = () => {
-    const tabs = [
-        {
-            title: 'Top',
-            content: (
-                <div>
-                    <GallerySection introduction={false} /> <GallerySection introduction={false} />
-                </div>
-            ),
-        },
-        {
-            title: 'Recent',
-            content: (
-                <div>
-                    <GallerySection introduction={false} generateRandomOrder={true} />{' '}
-                    <GallerySection introduction={false} generateRandomOrder={true} />
-                </div>
-            ),
-        },
-    ];
+const Gallery = (props: {
+    title: string;
+    description: string;
+    tabs: {
+        title: string;
+        content: JSX.Element;
+    }[];
+}) => {
+    const { title, description, tabs } = props;
 
     const [activeTab, setActiveTab] = useState(0);
 
@@ -28,16 +17,39 @@ const Gallery = () => {
         setActiveTab(index);
     };
 
+    const tabContainerStyles: React.CSSProperties = {
+        display: 'flex',
+        borderBottom: '1px solid',
+    };
+
+    const tabStyles: React.CSSProperties = {
+        padding: '10px 45px',
+        cursor: 'pointer',
+        margin: '0px 25px',
+    };
+
+    const tabIndicatorStyles: React.CSSProperties = {
+        position: 'relative',
+        height: '2px',
+        backgroundColor: '#000',
+        transition: 'left 0.3s ease',
+        display: 'none',
+    };
+
+    const tabContentStyles: React.CSSProperties = {
+        marginTop: '20px',
+    };
+
     return (
         <div className="Gallery ">
-            <div style={{background : '#FFE588'}} className='py-5'>
-                <div>
+            <div style={{ background: '#FFE588' }} className="py-5">
+                <div className='my-5'>
                     <div className="flex justify-content-between mx-7">
-                        <h3 className="text-2xl font-normal"> Our Gallery </h3>
-                        <h2 className="text-3xl font-normal"> TRAVELO </h2>
+                        <h3 className="text-2xl font-normal">{title}</h3>
+                        <h2 className="text-3xl font-normal">TRAVELO</h2>
                     </div>
                     <div>
-                        <h4 className="mx-7 font-normal mt-1"> Share your happy moments </h4>
+                        <h4 className="mx-7 font-normal mt-1">{description}</h4>
                     </div>
                 </div>
 
@@ -70,29 +82,6 @@ const Gallery = () => {
             </div>
         </div>
     );
-};
-
-const tabContainerStyles: React.CSSProperties = {
-    display: 'flex',
-    borderBottom: '1px solid',
-};
-
-const tabStyles: React.CSSProperties = {
-    padding: '10px 45px',
-    cursor: 'pointer',
-    margin: '0px 25px',
-};
-
-const tabIndicatorStyles: React.CSSProperties = {
-    position: 'relative',
-    height: '2px',
-    backgroundColor: '#000',
-    transition: 'left 0.3s ease',
-    display: 'none',
-};
-
-const tabContentStyles: React.CSSProperties = {
-    marginTop: '20px',
 };
 
 export default Gallery;
