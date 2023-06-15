@@ -1,0 +1,23 @@
+@import "../../../assets/variables";
+@import "../../../assets/mixins";
+.ProfileLayout {
+    overflow: hidden;
+  .pimagecontainer {
+    .pimage {
+      object-fit: cover;
+      height: 300px;
+    }
+    .pageWrapper {
+      background-color: $FormBG;
+      top: 220px;
+      height: 100%;
+      border-radius: 50px 50px 0 0;
+      padding: 40px;
+      overflow-y: scroll;
+      &::-webkit-scrollbar{
+        display: none;
+      }
+
+    }
+  }
+}
