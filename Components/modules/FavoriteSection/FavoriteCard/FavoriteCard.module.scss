@@ -1,0 +1,43 @@
+@import "../../../../assets/variables";
+@import "../../../../assets/mixins";
+.FavoriteCardContainer {
+//   width: 204px;
+  height: 126px;
+//   background-color: red;
+  .inner{
+
+    border-radius: 10px;
+  
+  .favTrip {
+    .imgContainer {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: $FormBG;
+      .userimg {
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+        object-fit: cover;
+      }
+    }
+    span{
+        @include font(15px, 500);
+
+    }
+  }
+
+  .location {
+    span {
+      @include font(14px, 500);
+    }
+  }
+  span {
+    @include font(14px, 500);
+  }
+  .bookmark{
+    top: 14px;
+    right: 14px;
+  }
+}
+}
