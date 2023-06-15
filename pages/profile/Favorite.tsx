@@ -1,7 +1,8 @@
+import FavoriteSection from "@/Components/modules/FavoriteSection/FavoriteSection"
 
 const Favorite = () => {
   return (
-    <div>Favorite</div>
+    <FavoriteSection/>
   )
 }
 

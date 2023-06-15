@@ -28,17 +28,22 @@ export interface Ierror {
 }
 
 interface IDataContext {
-  UserData: IUser;
-  setUserData: Dispatch<SetStateAction<IUser>>;
+  UserData: IUser,
+  setUserData: Dispatch<SetStateAction<IUser>>,
+  sidebarVisible:boolean,
+  setSidebarVisible:Dispatch<SetStateAction<boolean>>
+
 }
 
-export const DataContext = createContext<IDataContext | undefined>(undefined);
+export const DataContext = createContext<IDataContext | any >(undefined);
 
 interface ContextProviderProps {
   children: ReactNode;
 }
 
 const ContextProvider = ({ children }: ContextProviderProps) => {
+  const [sidebarVisible, setSidebarVisible] = useState<boolean>(false);
+
   const [UserData, setUserData] = useState<IUser>({
     FName: "",
     LName: "",
@@ -49,7 +54,7 @@ const ContextProvider = ({ children }: ContextProviderProps) => {
   });
 
   return (
-    <DataContext.Provider value={{ UserData, setUserData }}>
+    <DataContext.Provider value={{ UserData, setUserData ,sidebarVisible, setSidebarVisible}}>
       {children}
     </DataContext.Provider>
   );

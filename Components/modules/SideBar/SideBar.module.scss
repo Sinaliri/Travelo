@@ -5,7 +5,9 @@
   background-color: $secondaryColor ;
   // position: absolute;
   width: 100%;
+  // max-w  idth: 200px;
   height: 100vh;
+ 
   h2 {
     @include font(36px, 400);
     margin: 57px 0;

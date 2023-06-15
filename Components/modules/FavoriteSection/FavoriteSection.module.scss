@@ -1,0 +1,8 @@
+@import "../../../assets/variables";
+@import "../../../assets/mixins";
+.FavoriteSectionHeader{
+    margin: 0px 10px 70px 10px ;
+    h2{
+        @include font(24px , 400);
+    }
+}
