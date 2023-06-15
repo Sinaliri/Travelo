@@ -1,0 +1,12 @@
+@import "../../../assets/variables";
+@import "../../../assets/mixins";
+.notif {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: #fff;
+  .redspot {
+    right: 0;
+    top: 0;
+  }
+}
