@@ -13,7 +13,7 @@ const GallerySection = () => {
     return (
         <div className='GallerySection mx-4 mb-5'>
             <div className='flex justify-content-between'>
-                <div className='flex align-items-baseline'>
+                <div className='flex align-items-baseline mb-5 mt-3'>
                     <h3 className='text-3xl font-normal'> Our Gallery </h3>
                     <h4 className='text-base font-normal ml-4'> Share your happy moments </h4>
                 </div>

@@ -8,6 +8,7 @@ import FeaturesSection from '@/Components/FeaturesSection/FeaturesSection'
 import image from '../assets/images/womanAdvertise.png'
 import image2 from '../assets/images/womanWithBag.png'
 import GallerySection from '@/Components/GallerySection/GallerySection'
+import Footer from '@/Components/Footer/Footer'
 
 export default function Home() {
 
@@ -35,6 +36,7 @@ export default function Home() {
       <FeaturesSection featureItems={featureItems} image={image} />
       <GallerySection />
       <FeaturesSection featureItems={featureItems2} image={image2} />
+      <Footer />
 
     </div>
   )

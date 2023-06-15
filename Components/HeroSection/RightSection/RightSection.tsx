@@ -12,12 +12,12 @@ const RightSection = () => {
     return (
         <div className={`RightSection ml-auto px-3 py-2 overflow-auto custom-scrollbar ${styles.RightSection}`
         }
-            style={{ width: 'fit-content', background: '#424642' }}>
-            <h4 className='RightSection__title text-white py-1 px-2 my-2 font-medium text-sm'
-                style={{ background: '#000000', borderRadius: '50px' }}> meet our best drivers! </h4>
+            style={{ width: 'fit-content', background: '#CFCFCF' }}>
+            <h4 className='RightSection__title py-1 px-2 my-2 font-medium text-sm'
+                style={{ borderRadius: '50px', color: '#00000' }}> meet our best drivers! </h4>
 
-            <input placeholder='Please enter your location' className='text-white outline-none'
-                style={{ border: 'none', borderBottom: '1px solid #FFFFFF', background: 'transparent' }}
+            <input placeholder='Please enter your location' className='RightSection__input outline-none'
+                style={{ border: 'none', borderBottom: '2px solid #000000', color: '#000000', background: 'transparent' }}
             />
 
             <div>
