@@ -1,0 +1,19 @@
+@import "../../../assets/variables";
+@import "../../../assets/mixins";
+.buttonLink {
+  // border-radius: 10px;
+
+  .button {
+    padding: 15px;
+    // background-color: $FormBG;
+    height: 48px;
+
+    h4 {
+      margin-left: 14px;
+      @include font(20px, 400);
+    }
+  }
+  &:focus {
+    border-bottom: 1px solid #000 !important;
+  }
+}
