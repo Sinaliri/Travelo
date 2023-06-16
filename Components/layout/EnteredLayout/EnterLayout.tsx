@@ -10,7 +10,7 @@ interface EnterLayoutProps {
 const EnterLayout = ({ imgsrc, children }: EnterLayoutProps) => {
   return (
     <div className={`grid ${styles.container}`}>
-      <div className={`${styles.left} col-12 lg:col-6 flex justify-content-center align-items-center`}>
+      <div className={`${styles.left} hidden lg:flex col-12 lg:col-6 justify-content-center align-items-center`}>
         <Image className={`${styles.imagepart}`} src={imgsrc} alt="" />
       </div>
       <div className={`${styles.right} col-12 lg:col-6 flex justify-content-center align-items-center`}>
