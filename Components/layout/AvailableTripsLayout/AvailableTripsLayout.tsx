@@ -5,24 +5,19 @@ import styles from "./AvailableTripsLayout.module.scss";
 import insta from "../../../assets/images/instagram.svg";
 import briefCase from "../../../assets/images/availableTrip.svg";
 import AllTrips from "@/Components/modules/AllTrips/AllTrips";
+import Link from "next/link";
 const AvailableTripsLayout = () => {
   return (
-    <div className={`${styles.AvailableTripsContainer} relative`}>
-      <div className={`${styles.banner} relative`}>
+    <div className={`${styles.wrapper} relative`}>
+    <div className={`${styles.AvailableTripsContainer} `}>
+      <div className={`${styles.banner} flex justify-content-between` }>
         <h2>Available trips for Now!</h2>
-        <div className={`${styles.Contact}`}>
-          <h3>Contact with us!</h3>
-          <div className={`${styles.contactuspic}`}>
-            <Image className="" src={insta} alt="insta" />
-          </div>
-        </div>
-        <Image
-          className={`${styles.bannerImg} absolute`}
-          src={briefCase}
-          alt="bannerr"
-        />
+        <h2><Link href={"./"}>Travelo</Link></h2>
+        
+        
       </div>
-      <div className={`grid-nogutter`}>
+    </div>
+      <div className={`grid-nogutter${styles.AlltripsSection}`}>
         <AllTrips/>
       </div>
     </div>

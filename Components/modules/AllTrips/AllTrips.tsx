@@ -7,6 +7,12 @@ const AllTrips = () => {
       <SearchOptions />
       <div className={`${style.tripsRequestContainer}`}>
         <TripsRequetCard />
+        <TripsRequetCard />
+        <TripsRequetCard />
+        <TripsRequetCard />
+        <TripsRequetCard />
+        <TripsRequetCard />
+        <TripsRequetCard />
       </div>
     </div>
   );

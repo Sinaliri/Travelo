@@ -1,10 +1,16 @@
 @import "../../../assets/variables";
-.AvailableTripsContainer {
+.wrapper{
+min-height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .AvailableTripsContainer {
+    max-height: 100vh;
+  // max-width: 100vh;
   .banner {
     width: 100vw;
     background-color: $availableBanner;
-    height: 540px;
-    padding: 111px 104px;
+    height: 325px;
+    padding: 61px 104px;
     h2 {
       position: inherit;
       font: {
@@ -13,23 +19,35 @@
       }
       margin-bottom: 49px;
     }
-    .Contact {
-      position: inherit;
+    
+  }
+  .AlltripsSection{
+    height: 500px;
+  }
+}
+  // overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 10px;
+  }
 
-      h3 {
-        position: inherit;
-        font: {
-          size: 24px;
-          weight: 400;
-        }
-      }
-      .contactuspic {
-        position: inherit;
-      }
-    }
-    .bannerImg {
-      right: 0;
-      top: 0;
-    }
+  /* Track */
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    height: 5px;
+    // background: red;
+    background: $secondaryColor;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+    height: 5px;
   }
 }

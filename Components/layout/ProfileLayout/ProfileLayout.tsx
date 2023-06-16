@@ -30,9 +30,9 @@ const ProfileLayout = ({ children }: any) => {
         <SideBar />
       </div>
       <div className={`${style.pimagecontainer} col-9 md:col-8 p-0 relative`}>
-        <div className="absolute" onClick={handleButtonClick}>
+        {/* <div className="" onClick={handleButtonClick}>
           <Image  src={menu} alt="menu" />
-        </div>
+        </div> */}
         <Image className={`${style.pimage} w-full`} src={Profile} alt="profile.png" />
         <div className={`${style.pageWrapper} col-10 col-offset-1 absolute`}>{children}</div>
       </div>

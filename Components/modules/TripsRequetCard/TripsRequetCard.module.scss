@@ -4,27 +4,62 @@
   background-color: $FormBG;
   margin: 20px;
   border-radius: 50px;
+  min-height: 295px;
   //   min-height: 295px;
   .RequestDetail {
-    padding: 26px 63px;
+    padding: 26px 0px 26px 24px;
+    @media screen and (max-width: 992px) {
+      padding: 26px 0px 0px 24px;
+    }
     .left {
       .ownerImage {
         width: 108px;
         height: 108px;
         background-color: #fff;
         border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        object-fit: cover;
+        @media screen and (max-width: 425px) {
+          width: 70px;
+          height: 70px;
+        }
+        @media screen and (max-width: 375px) {
+          width: 50px;
+          height: 50px;
+        }
+        img {
+          width: inherit;
+          height: inherit;
+          border-radius: inherit;
+        }
       }
       .ownerPrice {
-        margin: 30px 0;
+        margin: 50px 0;
         @include font(24px, 400);
-      }
+        @media screen and (max-width: 425px) {
+          @include font(20px, 400);
+          margin: 20px auto !important;
+        }
+        @media screen and (max-width: 375px) {
+          @include font(16px, 400);
+        
+      }  margin: 10px auto !important;
+        }
       .rate {
-        padding: 0 10px;
+        // padding: 0 10px;
         .like {
           span {
             @include font(20px, 400);
 
             vertical-align: 1px;
+            @media screen and (max-width: 425px) {
+              @include font(15px, 400);
+            }
+            @media screen and (max-width: 375px) {
+              @include font(13px, 400);
+            }
           }
           // vertical-align: 50px;
           // margin-right: 30px;
@@ -34,6 +69,9 @@
             @include font(20px, 400);
 
             vertical-align: 3px;
+            @media screen and (max-width: 375px) {
+              @include font(13px, 400);
+            }
           }
           // vertical-align: 50px;
         }
@@ -42,12 +80,33 @@
     .right {
       // background-color: red;
       padding: 25px;
+      @media screen and (max-width: 425px) {
+        padding:10px 0;
+      }
       .Destination {
         margin-bottom: 40px;
         @include font(24px, 400);
+        @media screen and (min-width: 992px) and (max-width: 1190px) {
+          @include font(18px, 400);
+        }
+        @media screen and (max-width: 425px) {
+          @include font(16px, 700);
+          margin-bottom: 10px;
+        }
+        @media screen and (max-width: 375px) {
+          @include font(14px, 700);
+          margin-bottom: 10px;
+        }
+        
       }
       .TripsOwner {
         @include font(20px, 400);
+        @media screen and (max-width: 425px) {
+          @include font(16px, 400);
+        }
+        @media screen and (max-width: 375px) {
+          @include font(14px, 400);
+        }
         margin-bottom: 20px;
       }
     }
@@ -56,22 +115,44 @@
     border-left: 1px solid #000;
     border-right: 1px solid #000;
     padding: 50px;
+    @media screen and (max-width: 992px) {
+      border: 0;
+      padding: 10px;
+    }
     .Description {
       @include font(20px, 400);
       margin-left: 12px;
       margin-bottom: 33px;
-    }
-    p{
-        @include font(16px, 400);
+      @media screen and (max-width: 992px) {
+        margin-bottom: 10px;
 
+      }
+      @media screen and (max-width: 425px) {
+        @include font(16px, 700);
+        margin-bottom: 10px;
+      }
+    }
+    p {
+      overflow-y: scroll;
+      @include scroolbar;
+      height: 120px;
+      @include font(16px, 400);
+      @media screen and (max-width: 425px) {
+        @include font(12px, 400);
+
+        margin: 0 12px;
+      }
     }
   }
-  .RequestButton{
-    padding: 40px;
-    .sendButton{
-        background-color: #fff;
-        color: #000;
-        border: none;
+  .RequestButton {
+    padding-bottom: 40px;
+    .sendButton {
+      background-color: #fff;
+      color: #000;
+      border: none;
+      @media screen and (max-width: 425px) {
+        @include font(12px, 400);
+      }
     }
   }
 }
