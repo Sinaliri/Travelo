@@ -162,7 +162,7 @@ const Signup = () => {
               onChange={changeHandler}
               onFocus={touchHandler}
             />
-            <label className="ml-2">I agree with privecy and policy</label>
+            <label className={`${styles.checkboxlabel} ml-2`}>I agree with privecy and policy</label>
           </div>
           {errors.isAccepted && touch.isAccepted && (
             <span>{errors.isAccepted}</span>
