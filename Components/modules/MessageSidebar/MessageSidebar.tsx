@@ -9,7 +9,7 @@ const MessageSidebar = () => {
     };
 
     return (
-        <div className="MessageSidebar h-full w-full py-5" style={{ background: '#FFE588', width: 'fit-content', borderRadius: '50px 50px 0px 0px' }}>
+        <div className="MessageSidebar h-full py-5" style={{ background: '#FFE588', borderRadius: '50px 50px 0px 0px' }}>
             <h4 className="flex justify-content-center font-normal text-2xl"> Message </h4>
             <div className="cursor-pointer flex flex-column my-5" style={{ rowGap: '15px' }}>
                 {users.map((item) => (
