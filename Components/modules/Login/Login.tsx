@@ -111,7 +111,7 @@ const Login = () => {
         </div>
         <div className={`${styles.inputwrapper} col-12`}>
           <div className={`flex align-items-center justify-content-between`}>
-            <div>
+            <div className={`flex align-items-center`}>
               <input
                 // className={(errors.isAccepted && touch.isAccepted )? styles.uncompleted : null}
                 type="checkbox"
@@ -120,9 +120,9 @@ const Login = () => {
                 onChange={changeHandler}
                 onFocus={touchHandler}
               />
-              <label className="ml-2">Remember me</label>
+              <label className={`${styles.checkboxlabel} ml-2`}>Remember me</label>
             </div>
-            <label className="ml-2">Forogot password?</label>
+            <label className={`${styles.checkboxlabel} ml-2`}>Forogot password?</label>
           </div>
         </div>
         <div

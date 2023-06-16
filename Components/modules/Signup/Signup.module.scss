@@ -32,7 +32,7 @@
       }
       .checkboxlabel {
         @media screen and (max-width: 1199px) {
-          @include font(15px, 400);
+          @include font(13px, 400);
         }
       }
       input {
@@ -91,14 +91,14 @@
     h5 {
       @include font(20px, 400);
       margin-right: 17px;
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: 992px) {
         @include font(14px, 400);
       }
     }
     .loginLink {
       @include font(20px, 400);
 
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: 992px) {
         @include font(14px, 400);
       }
     }
