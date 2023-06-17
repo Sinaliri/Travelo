@@ -6,6 +6,7 @@ import Notif from '../Notif/Notif';
 import React, { useState } from "react";
 import { Dropdown } from 'primereact/dropdown';
 import styles from "../Settings/SettingsSection.module.scss";
+import Link from 'next/link';
 
 interface Country {
     name: string;
@@ -50,16 +51,16 @@ const CreateTripComponent = () => {
     };
 
     return (
-        <div className='p-5 m-7 relative' style={{ background: '#FFE588', borderRadius: '50px' }}>
+        <div className='p-5 m-1 lg:m-4 lg:mb-0 relative overflow-hidden'   style={{ background: '#FFE588', borderRadius: '50px' }}>
             <div className='flex justify-content-between'>
                 <h3 className='font-normal text-2xl'> Create a trip! </h3>
-                <h3 className='font-normal text-2xl'> TRAVELO </h3>
+                <h3 className='font-normal text-2xl'> <Link href={`./`}>TRAVELO</Link> </h3>
             </div>
-            <div>
-                <div>
+            <div className='flex justify-content-center lg:justify-content-start'>
+                <div className='hidden lg:block'>
                     <Image src={baggage} alt='' className='absolute bottom-0 right-0 h-full w-auto' />
                 </div>
-                <div className='px-7 py-5 my-7 w-6' style={{ background: '#CFCFCF', borderRadius: '50px' }}>
+                <div className='px-4 lg:px-7 py-5 my-7 w-6 z-5 relative w-12 lg:w-5' style={{ background: '#CFCFCF', borderRadius: '50px'  }}>
                     <div className='flex justify-content-between align-items-center'>
                         <h4 className='font-normal text-2xl'> TRAVELO </h4>
                         <Notif />
@@ -75,9 +76,9 @@ const CreateTripComponent = () => {
                         <Input label="Day-To" />
                         <Input label="Price" />
                         <Input label="Transportation" />
-                        <div className='flex align-items-end justify-content-between w-full'>
+                        <div className='flex flex-column lg:flex-row align-items-end justify-content-between w-full'>
                             <Input label="Decription" width="6" height="140px" />
-                            <div className={`${styles.buttonContainer} flex justify-content-end align-items-center w-full`}>
+                            <div className={`${styles.buttonContainer} flex justify-content-between lg:justify-content-end align-items-center w-full`}>
                                 <button className={`${styles.submit2}`} type="submit">Create</button>
                                 <button className={`${styles.submit2}`} type="submit">Cancel</button>
 
