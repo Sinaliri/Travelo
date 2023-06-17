@@ -7,7 +7,6 @@ import Login from "@/Components/modules/Login/Login"
 const login = () => {
   return (
     <EnterLayout imgsrc={LoginSvg as string}>
-      {/* complete login component and replace it with signup component */}
       <Login />
     </EnterLayout>
   )

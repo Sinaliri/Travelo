@@ -15,7 +15,7 @@ import styles from "./Signup.module.scss";
 import { validate } from "@/Context/Services/Functions/validate";
 //primereact
 import { Toast } from "primereact/toast";
-import { Api_signup } from "@/Context/Services/Functions/Api";
+import { signUp } from "@/Context/Services/Functions/Api";
 const Signup = () => {
   const toast = useRef<Toast>(null);
   const [UserData, setUserData] = useState<IUser>({
@@ -26,7 +26,7 @@ const Signup = () => {
     confirmPassword: "",
     isAccepted: false,
   });
-    // const { UserData , setUserData }=useContext(DataContext);
+  // const { UserData , setUserData }=useContext(DataContext);
   const [touch, setTouch] = useState<Itouch>({});
   const [errors, setErrors] = useState<Ierror>({});
 
@@ -36,21 +36,48 @@ const Signup = () => {
     } else {
       setUserData({ ...UserData, [event.target.name]: event.target.value });
     }
-    console.log(UserData);
   };
+  const signUpClick = () => {
+    if (!Object.keys(errors).length) {
+      signUp(UserData.email, UserData.FName, UserData.LName, UserData.password, UserData.confirmPassword).then((res) => {
+        if (res.status === 201) {
+          showSuccess();
+        }
+        else ErrorToast(res.response.data.error)
+      });
+    }
+    else {
+      showError();
+      setTouch({
+        FName: true,
+        LName: true,
+        email: true,
+        password: true,
+        confirmPassword: true,
+        isAccepted: true,
+      });
+    }
+  }
   useEffect(() => {
     setErrors(validate(UserData, "SignUp"));
-    console.log(errors);
   }, [UserData, touch]);
   const touchHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setTouch({ ...touch, [event.target.name]: true });
   };
   const showError = () => {
-    console.log("here");
     toast.current?.show({
       severity: "error",
       summary: "Error",
       detail: "invalid data",
+      life: 3000,
+    });
+  };
+
+  const ErrorToast = (text: string) => {
+    toast.current?.show({
+      severity: "error",
+      summary: "Error",
+      detail: text,
       life: 3000,
     });
   };
@@ -64,24 +91,9 @@ const Signup = () => {
   };
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    if (!Object.keys(errors).length) {
-      console.log(UserData);
-      Api_signup(UserData.email,UserData.password,UserData.FName,UserData.LName,UserData.confirmPassword)
-      showSuccess();
-    } else {
-      console.log("er");
-      showError();
-      setTouch({
-        FName: true,
-        LName: true,
-        email: true,
-        password: true,
-        confirmPassword: true,
-        isAccepted: true,
-      });
-    }
   };
+
+
   return (
     <div className={`${styles.SignupContainer}`}>
       <Toast ref={toast} />
@@ -173,7 +185,7 @@ const Signup = () => {
         <div
           className={`${styles.ButtonContainer} flex justify-content-center align-items-center md:col-8 md:col-offset-2 p-0`}
         >
-          <button type="submit">Sign up!</button>
+          <button type="submit" onClick={signUpClick}>Sign up!</button>
         </div>
       </form>
       <div className={`flex ${styles.LoginRef} align-items-center`}>

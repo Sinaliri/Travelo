@@ -63,7 +63,7 @@ const Login = () => {
     event.preventDefault();
 
     if (!Object.keys(errors).length) {
-      login(UserData.email,UserData.password)
+      login(UserData.email, UserData.password)
       showSuccess();
     } else {
       console.log(errors);
@@ -79,6 +79,13 @@ const Login = () => {
       });
     }
   };
+
+  const loginClick = () => {
+    login(UserData.email, UserData.password).then((res) => {
+      console.log(res);
+
+    });
+  }
   return (
     <div className={`${styles.SignupContainer}`}>
       <Toast ref={toast} />
@@ -130,7 +137,7 @@ const Login = () => {
         <div
           className={`${styles.ButtonContainer} flex justify-content-center align-items-center md:col-8 md:col-offset-2 p-0`}
         >
-          <button type="submit">Sign in!</button>
+          <button type="submit" onClick={loginClick}>Sign in!</button>
         </div>
       </form>
       <div className={`flex ${styles.LoginRef} align-items-center`}>
