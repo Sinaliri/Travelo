@@ -20,23 +20,23 @@ const ProfileLayout = ({ children }: any) => {
   // const setSidebarVisible=context?.setSidebarVisible;
   return (
     <div className={`${style.ProfileLayout} grid m-0 relative`}>
-      <div className={`${style.sidebarcontainer} col-2  p-0 relative`}
+      <div className={`${style.sidebarcontainer} col-12 md:col-2  p-0 relative`}
        style={
         sidebarVisible
-          ? { position: "absolute", zIndex: "199", display: "block" }
+          ? { position: "relative", zIndex: "199", display: "block" }
           : {}
       }
       >
         <SideBar />
       </div>
-      <div className={`${style.pimagecontainer} col-9 md:col-8 p-0 relative`}>
+      <div className={`${style.pimagecontainer} col-8 p-0 relative`}>
         {/* <div className="" onClick={handleButtonClick}>
           <Image  src={menu} alt="menu" />
         </div> */}
         <Image className={`${style.pimage} w-full`} src={Profile} alt="profile.png" />
         <div className={`${style.pageWrapper} col-10 col-offset-1 absolute`}>{children}</div>
       </div>
-      <div className={`col-3 md:col-4 lg:col-2 p-0 `}>
+      <div className={`col-4 md:col-2 lg:col-2 p-0 `}>
         <ProfileSection />
       </div>
     </div>

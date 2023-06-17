@@ -26,7 +26,7 @@ const Signup = () => {
     confirmPassword: "",
     isAccepted: false,
   });
-  //   const { UserData, setUserData }=useContext(DataContext) || {};
+    // const { UserData , setUserData }=useContext(DataContext);
   const [touch, setTouch] = useState<Itouch>({});
   const [errors, setErrors] = useState<Ierror>({});
 

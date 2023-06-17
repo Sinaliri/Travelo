@@ -1,20 +1,32 @@
+import { ChangeEvent } from 'react';
 import styles from './Input.module.scss'
+import { log } from 'console';
 
 interface Iinput{
     label:string,
     width?:string,
     height?:string,
-  }
-const Input = ({label , width="6", height}:Iinput) => {
+    name:string,
+    value:string,
+    type:string,
+    onChange: (name: string, value: string) => void;
 
+  }
+  const Input: React.FC<Iinput>= ({label , width="6", height , name , value , type , onChange}) => {
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      onChange(name, value);
+    };
   return (
     <div className={`${styles.inputwrapper} col-12 xl:col-${width}`}>
             <label>{label}</label>
             <input
             style={{height:`${height}`}}
               //    className={(errors.name && touch.name ) && styles.uncompleted}
-              type='textarea'
-              name="FName"
+              type={type}
+              name={name}
+              value={value}
+              onChange={handleInputChange}
             //   value={UserData.FName}
               
             />

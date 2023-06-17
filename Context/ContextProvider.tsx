@@ -26,16 +26,32 @@ export interface Ierror {
   confirmPassword?: string;
   isAccepted?: string;
 }
+export interface IUserSetting{
+  FirstName: string,
+  LastName: string,
+  Email: string,
+  Number:string,
+  Career: string,
+  Education: string,
+  LivingIn: string,
+  PersonalityType: string,
+  SocialMedia: string,
+  Workout: string,
+  Descripition: string,
+}
+
 
 interface IDataContext {
   UserData: IUser,
   setUserData: Dispatch<SetStateAction<IUser>>,
+  UserSetting: IUserSetting,
+  setUserSetting: Dispatch<SetStateAction<IUserSetting>>,
   sidebarVisible:boolean,
   setSidebarVisible:Dispatch<SetStateAction<boolean>>
 
 }
 
-export const DataContext = createContext<IDataContext | any >(undefined);
+export const DataContext = createContext({} as IDataContext);
 
 interface ContextProviderProps {
   children: ReactNode;
@@ -43,7 +59,20 @@ interface ContextProviderProps {
 
 const ContextProvider = ({ children }: ContextProviderProps) => {
   const [sidebarVisible, setSidebarVisible] = useState<boolean>(false);
-
+  const [UserSetting,setUserSetting]=useState<IUserSetting>({
+    FirstName:"",
+    LastName:"",
+    Email:"",
+    Number:"",
+    Career:"",
+    Education:"",
+    LivingIn:"",
+    PersonalityType:"",
+    SocialMedia:"",
+    Workout:"",
+    Descripition:"",
+  })
+ 
   const [UserData, setUserData] = useState<IUser>({
     FName: "",
     LName: "",
@@ -54,7 +83,7 @@ const ContextProvider = ({ children }: ContextProviderProps) => {
   });
 
   return (
-    <DataContext.Provider value={{ UserData, setUserData ,sidebarVisible, setSidebarVisible}}>
+    <DataContext.Provider value={{ UserData, setUserData ,sidebarVisible, setSidebarVisible , UserSetting ,setUserSetting}}>
       {children}
     </DataContext.Provider>
   );

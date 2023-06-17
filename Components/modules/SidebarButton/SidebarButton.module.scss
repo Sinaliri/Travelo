@@ -7,10 +7,20 @@
     padding: 15px;
     // background-color: $FormBG;
     height: 48px;
+   
 
     h4 {
       margin-left: 14px;
       @include font(20px, 400);
+      @media screen and (max-width:767px) {
+        @include font(12px,400);
+        
+        // justify-content: space-between;
+        // display: none !important;
+        // position: absolute !important;
+        // width: 50vw;
+    
+      }
     }
   }
   &:focus {
