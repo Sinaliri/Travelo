@@ -3,7 +3,22 @@ import pointer from '../../../assets/icons/pointer.svg';
 import Image from 'next/image';
 import PeopleSimpleCard from '../PeopleSimpleCard/PeopleSimpleCard';
 
-const PeopleSection = () => {
+interface PersonData {
+    first_name: string;
+    career: string;
+    education: string;
+    livingIn: string;
+    personality_type: string;
+    instagram: string;
+    workout: string;
+    image: any;
+}
+const PeopleSection = (props: {
+    mostEligible: PersonData[], nearby: PersonData[], views: PersonData[]
+}) => {
+    const mostEligible = props.mostEligible
+    const nearby = props.nearby
+    const views = props.views
     const options = ['Most Eligible', 'Nearby', 'Views'];
     const [selectedOption, setSelectedOption] = useState(options[0]);
 
@@ -39,26 +54,23 @@ const PeopleSection = () => {
             {/* Show exclusive content based on the selected option */}
             {selectedOption === 'Most Eligible' && (
                 <div className='my-5 flex justify-content-between'>
-                    <PeopleSimpleCard name='Elnaz' role='Web developer' />
-                    <PeopleSimpleCard name='Elnaz' role='Web developer' />
-                    <PeopleSimpleCard name='Elnaz' role='Web developer' />
-                    <PeopleSimpleCard name='Elnaz' role='Web developer' />
+                    {mostEligible.slice(0, 3).map((item) => (
+                        <PeopleSimpleCard key={item.first_name} name={item.first_name} role={item.career} />
+                    ))}
                 </div>
             )}
             {selectedOption === 'Nearby' && (
                 <div className='my-5 flex justify-content-between'>
-                    <PeopleSimpleCard name='Mohammad' role='Web developer' />
-                    <PeopleSimpleCard name='Amir' role='Web developer' />
-                    <PeopleSimpleCard name='Sina' role='Web developer' />
-                    <PeopleSimpleCard name='Mehdi' role='Web developer' />
+                    {nearby.slice(0, 3).map((item) => (
+                        <PeopleSimpleCard key={item.first_name} name={item.first_name} role={item.career} />
+                    ))}
                 </div>
             )}
             {selectedOption === 'Views' && (
                 <div className='my-5 flex justify-content-between'>
-                    <PeopleSimpleCard name='Arian' role='Web developer' />
-                    <PeopleSimpleCard name='Farshad' role='Web developer' />
-                    <PeopleSimpleCard name='Amin' role='Web developer' />
-                    <PeopleSimpleCard name='Mehdi' role='Web developer' />
+                    {views.slice(0, 3).map((item) => (
+                        <PeopleSimpleCard key={item.first_name} name={item.first_name} role={item.career} />
+                    ))}
                 </div>
             )}
         </div>

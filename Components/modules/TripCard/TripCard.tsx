@@ -5,14 +5,14 @@ import selectebookmark from "../../../assets/icons/selectedBookmark.svg"
 import { Rating, RatingChangeEvent } from "primereact/rating";
 
 const TripCard = (props: {
-    name: string, price: number, fromCity: string, toCity: string, rating: number
+    name: string, price: number, fromCity: string, toCity: string, rating?: number
 }) => {
     const name = props.name
     const price = props.price
     const fromCity = props.fromCity
     const toCity = props.toCity
     const rating = props.rating
-    const [value, setValue] = useState<number>(rating);
+    const [value, setValue] = useState<number | undefined>(rating);
 
     return (
         <div
@@ -35,8 +35,10 @@ const TripCard = (props: {
                     <div className='flex flex-column align-items-center'
                         style={{ rowGap: '7px' }}
                     >
-                        <Rating className='justify-content-end'
-                            value={value} onChange={(e: RatingChangeEvent) => setValue(e.value)} cancel={false} />
+                        {value &&
+                            <Rating className='justify-content-end'
+                                value={value} onChange={(e: RatingChangeEvent) => setValue(e.value)} cancel={false} />
+                        }
                         <span className="mx-3 text-sm">{name}</span>
                         <span className="text-sm">{price} T</span>
                     </div>
