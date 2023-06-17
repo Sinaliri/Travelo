@@ -10,6 +10,7 @@ interface FeatureItem {
 interface FeaturesSectionProps {
     image: any;
     featureItems: FeatureItem[];
+    
 }
 
 const FeaturesSection: React.FC<FeaturesSectionProps> = ({ image, featureItems }) => {

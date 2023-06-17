@@ -43,10 +43,10 @@ export default function Home() {
   return (
     <div className='dashboard' style={{ fontFamily: 'Inter' }}>
       <div className='dashboard__heroSection'>
-        <HeroSection Driver={data.best_driver}  />
+        <HeroSection Driver={data?.best_driver}  />
         
       </div>
-      <AvailableTrips Trips={data.trip_for_now} />
+      <AvailableTrips Trips={data?.trip_for_now} />
       <FeaturesSection featureItems={featureItems} image={image} />
       <GallerySection />
       <FeaturesSection featureItems={featureItems2} image={image2} />

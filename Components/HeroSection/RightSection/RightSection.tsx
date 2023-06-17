@@ -24,7 +24,7 @@ const RightSection = (props: {Driver:any}) => {
                 {
                     Driver &&
                     Driver.map((item:any)=>{
-                        return <DriverCard key={item.index} rate={item.rate}/>
+                        return <DriverCard key={item.index} rate={item.rate} image={item.trip_owner_image}/>
                     })
                 }
             </div>

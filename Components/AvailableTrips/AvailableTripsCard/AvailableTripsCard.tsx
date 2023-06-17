@@ -11,7 +11,7 @@ const AvailableTripsCard = (props:{from:string,to:string,price:number,ownername:
         >
             <div className='flex'>
                 <div>
-                    <img src={props.image}
+                    <img src={`http://localhost:8000/${props.image}`}
                         style={{ borderRadius: '50%', width: '5rem', height: '5rem' }} />
                 </div>
                 <div className='flex flex-column ml-3' style={{ gap: '10px' }}>
