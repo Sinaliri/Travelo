@@ -8,11 +8,9 @@ let defaultApi = axios.create({
   baseURL: base_url,
 });
 
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   var token = localStorage.getItem("accessToken");
 }
-
-
 
 export const login = (phone_or_email: string, password: string) => {
   return defaultApi({
@@ -48,47 +46,48 @@ export const signUp = (
     .catch((err) => err);
 };
 export const Api_signup = async (
-    phone_or_email: string,
-    password: string,
-    first_name: string,
-    last_name: string,
-    password2: string
-  ) => {
-    try {
-      const response = await defaultApi.post(`${base_url}accounts/signup/`, {
-        phone_or_email,
-        first_name,
-        last_name,
-        password,
-        password2,
-      });
-      
-      console.log("res:", response.data); // Access the response data
-      
-      // Check for specific success criteria in the response and return relevant data if needed
-      if (response.status === 200) {
-        return response.data;
-      } else {
-        throw new Error("Unexpected response from the server");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      // Check if the error response is available
-      if (error.response) {
-        console.error("Error response:", error.response.data);
-      }
-      throw error; // Rethrow the error to handle it at the calling code level
+  phone_or_email: string,
+  password: string,
+  first_name: string,
+  last_name: string,
+  password2: string
+) => {
+  try {
+    const response = await defaultApi.post(`${base_url}accounts/signup/`, {
+      phone_or_email,
+      first_name,
+      last_name,
+      password,
+      password2,
+    });
+
+    console.log("res:", response.data); // Access the response data
+
+    // Check for specific success criteria in the response and return relevant data if needed
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      throw new Error("Unexpected response from the server");
     }
-  };
-  export const MainPageTrip = () => {
-      return defaultApi({
-      method: "get",
-      url: `${base_url}main-page/trip/`,
-      
+  } catch (error) {
+    console.error("Error:", error);
+    // Check if the error response is available
+    if (error.response) {
+      console.error("Error response:", error.response.data);
+    }
+    throw error; // Rethrow the error to handle it at the calling code level
+  }
+};
+export const MainPageTrip = () => {
+  return defaultApi({
+    method: "get",
+    url: `${base_url}main-page/trip/`,
+  })
+    .then((res) => {
+      return res.data;
     })
-      .then((res) =>{return res.data})
-      .catch((err) => console.log("err" + err))
-  };
+    .catch((err) => console.log("err" + err));
+};
 
 export const People = () => {
   return defaultApi({
@@ -101,7 +100,6 @@ export const People = () => {
     .then((res) => res)
     .catch((err) => err);
 };
-
 
 export const FavoriteTrip = () => {
   return defaultApi({
@@ -126,10 +124,33 @@ export const MyTrip = () => {
     .then((res) => res)
     .catch((err) => err);
 };
-
-
-
-
-
-
-
+export const ChangeProfile = (changedData) => {
+  const data= {};
+  Object.keys(changedData).forEach((key) => {
+    if (changedData[key]?.length > 0) {
+      data[key] = changedData[key];
+    }
+  });
+  console.log(Object.keys(changedData))
+  return defaultApi({
+    method: "put",
+    url: `${base_url}user-detail/profile/`,
+    data: changedData,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  .then((res) => res)
+  .catch((err) => err);
+};
+export const UserProfile = () => {
+  return defaultApi({
+    method: "get",
+    url: `${base_url}user-detail/profile/`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res)
+    .catch((err) => err);
+};
