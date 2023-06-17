@@ -1,13 +1,12 @@
 import React from 'react';
 import DriverCard from './DriverCard/DriverCard';
 import styles from "./RightSection.module.scss";
+ import { ITrip } from '@/Context/Services/Functions/interfaces';
 
-const RightSection = () => {
-    const driverCards = [];
+const RightSection = (props: {Driver:any}) => {
+    const {Driver} =props;
 
-    for (let i = 0; i < 7; i++) {
-        driverCards.push(<DriverCard key={i} />);
-    }
+   
 
     return (
         <div className={`RightSection ml-auto px-3 py-2 overflow-auto custom-scrollbar ${styles.RightSection}`
@@ -21,7 +20,13 @@ const RightSection = () => {
             />
 
             <div>
-                {driverCards}
+                {/* {driverCards } */}
+                {
+                    Driver &&
+                    Driver.map((item:any)=>{
+                        return <DriverCard key={item.index} rate={item.rate}/>
+                    })
+                }
             </div>
         </div >
     );

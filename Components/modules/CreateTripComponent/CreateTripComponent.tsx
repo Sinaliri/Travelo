@@ -3,7 +3,7 @@ import Image from 'next/image';
 import style from "../../layout/ProfileLayout/ProfileLayout.module.scss";
 import Input from '../Input/Input';
 import Notif from '../Notif/Notif';
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { Dropdown } from 'primereact/dropdown';
 import styles from "../Settings/SettingsSection.module.scss";
 import Link from 'next/link';
@@ -39,6 +39,13 @@ const CreateTripComponent = () => {
       })
       const handler = (name: string, value: string) => {
         setNewTrip({ ...NewTrip, [name]: value });
+        console.log(NewTrip)
+      };
+      const CreateAtrip = (e:ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        if (selectedCountry) {
+            setNewTrip({ ...NewTrip, Country: selectedCountry.name });
+          }
         console.log(NewTrip)
       };
     const selectedCountryTemplate = (option: Country, props) => {
@@ -80,7 +87,7 @@ const CreateTripComponent = () => {
                         <Notif />
                     </div>
                     <form className={`grid`}>
-                        <Dropdown value={selectedCountry} onChange={(e) => {setSelectedCountry(e.value);setNewTrip(NewTrip.Country=e.value)}} options={countries} optionLabel="name" placeholder="Select a Country"
+                        <Dropdown name='Country' value={selectedCountry} onChange={(e) => {setSelectedCountry(e.value)}} options={countries} optionLabel="name" placeholder="Select a Country"
                             filter valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} className="w-full mt-5"
                             style={{ borderRadius: '10px' }}
                         />
@@ -95,7 +102,7 @@ const CreateTripComponent = () => {
                         <Input label="Descripition" width="6" height="140px" type="text" name="Descripition" value={NewTrip.Descripition} onChange={handler} />
 
                             <div className={`${styles.buttonContainer} flex justify-content-between lg:justify-content-end align-items-center w-full`}>
-                                <button className={`${styles.submit2}`} type="submit">Create</button>
+                                <button className={`${styles.submit2}`} type="submit" onClick={CreateAtrip}>Create</button>
                                 <button className={`${styles.submit2}`} type="submit">Cancel</button>
 
                             </div>

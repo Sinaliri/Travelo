@@ -7,8 +7,10 @@ const CommonButtonWithRadius = (props: {
     bgColor: string;
     bothSideRadius?: boolean;
     fontSize?: number
+    handler: () => void;
+
 }) => {
-    const { text, bgColor, bothSideRadius, fontSize } = props;
+    const { text, bgColor, bothSideRadius, fontSize , handler } = props;
 
     const borderRadiusStyle = bothSideRadius ? '50px' : '50px 0 0 50px';
 
@@ -25,6 +27,7 @@ const CommonButtonWithRadius = (props: {
                 borderRadius: borderRadiusStyle,
                 fontSize: `${fontSize}px`
             }}
+            onClick={handler}
         >
             {text}
             <Image src={pointer} alt='' />

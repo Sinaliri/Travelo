@@ -57,6 +57,15 @@ export const Api_signup = async (
       throw error; // Rethrow the error to handle it at the calling code level
     }
   };
+  export const MainPageTrip = () => {
+      return defaultApi({
+      method: "get",
+      url: `${base_url}main-page/trip/`,
+      
+    })
+      .then((res) =>{return res.data})
+      .catch((err) => console.log("err" + err))
+  };
 
   
   
