@@ -6,7 +6,11 @@ import insta from "../../../assets/images/instagram.svg";
 import briefCase from "../../../assets/images/availableTrip.svg";
 import AllTrips from "@/Components/modules/AllTrips/AllTrips";
 import Link from "next/link";
+import { useState } from "react";
 const AvailableTripsLayout = () => {
+  const [SearchoptionState,setSearchoptionState]=useState({
+    
+  })
   return (
     <div className={`${styles.wrapper} relative`}>
     <div className={`${styles.AvailableTripsContainer} `}>

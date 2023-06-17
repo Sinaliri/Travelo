@@ -8,11 +8,9 @@ let defaultApi = axios.create({
   baseURL: base_url,
 });
 
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   var token = localStorage.getItem("accessToken");
 }
-
-
 
 export const login = (phone_or_email: string, password: string) => {
   return defaultApi({
@@ -70,10 +68,11 @@ export const MainPageTrip = () => {
   return defaultApi({
     method: "get",
     url: `${base_url}main-page/trip/`,
-
   })
-    .then((res) => { return res.data })
-    .catch((err) => console.log("err" + err))
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => console.log("err" + err));
 };
 
 export const People = () => {
@@ -87,7 +86,6 @@ export const People = () => {
     .then((res) => res)
     .catch((err) => err);
 };
-
 
 export const FavoriteTrip = () => {
   return defaultApi({
@@ -112,8 +110,33 @@ export const MyTrip = () => {
     .then((res) => res)
     .catch((err) => err);
 };
-
-
-
-
-
+export const ChangeProfile = (changedData) => {
+  const data= {};
+  Object.keys(changedData).forEach((key) => {
+    if (changedData[key]?.length > 0) {
+      data[key] = changedData[key];
+    }
+  });
+  console.log(Object.keys(changedData))
+  return defaultApi({
+    method: "put",
+    url: `${base_url}user-detail/profile/`,
+    data: changedData,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  .then((res) => res)
+  .catch((err) => err);
+};
+export const UserProfile = () => {
+  return defaultApi({
+    method: "get",
+    url: `${base_url}user-detail/profile/`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res)
+    .catch((err) => err);
+};

@@ -5,10 +5,20 @@ import plus from "../../../assets/icons/plus.svg";
 import { useEffect, useState } from "react";
 import FavoriteCard from "../FavoriteSection/FavoriteCard/FavoriteCard";
 import TripCard from "../TripCard/TripCard";
-import { MyTrip } from "@/Context/Services/Functions/Api";
+import { MyTrip, UserProfile } from "@/Context/Services/Functions/Api";
 
 const ProfileSection = () => {
   const [value, setValue] = useState<number>(0);
+  const [userData, setuserData] = useState();
+  useEffect(() => {
+    MyTrip().then((res) => {
+      console.log(res);
+    });
+    UserProfile().then((res) => {
+      setuserData(res.data);
+      console.log(res.data);
+    });
+  }, []);
   const [MyTrips, setMyTrips] = useState([]);
 
   useEffect(() => {
@@ -23,7 +33,7 @@ const ProfileSection = () => {
 
   return (
     <aside
-      style={{ fontFamily: 'Inter' }}
+      style={{ fontFamily: "Inter" }}
       className={`${styles.ProfileSectionContainer} flex flex-column  align-items-center`}
     >
       <h2>Profile</h2>
@@ -31,12 +41,23 @@ const ProfileSection = () => {
         className={`${styles.ProfileDetail} flex flex-column align-items-center`}
       >
         <div className={`${styles.profilepic} `}>
-          <img className={`${styles.userpic}`} src={'https://xsgames.co/randomusers/avatar.php?g=male'} alt='profilepic' />
-          <Image className={`${styles.profileImagechange}`} src={plus} alt="" />
+          <img
+            className={`${styles.userpic}`}
+            src={`http://localhost:8000/${userData?.image}`}
+            alt="profilepic"
+          />
+          {/* <Image className={`${styles.profileImagechange}`} src={plus} alt="" /> */}
         </div>
-        <span className={`${styles.profileName} `}>alireaza kiani</span>
-        <Rating className='justify-content-end'
-          value={value} onChange={(e: RatingChangeEvent) => setValue(e.value)} cancel={false} />
+        <span
+          className={`${styles.profileName} `}
+        >{`${userData?.first_name} ${userData?.last_name}`}</span>
+        <Rating
+          className="justify-content-end"
+          value={Math.ceil(Math.random() * 5 + 1)}
+          readOnly
+          onChange={(e: RatingChangeEvent) => setValue(e.value)}
+          cancel={false}
+        />
       </div>
       <div className={`${styles.YourTrips} w-full flex flex-column`}>
         <h2>Your trips!</h2>

@@ -1,16 +1,16 @@
-import styles from './FavoriteSection.module.scss'
-import Notif from '../Notif/Notif'
-import FavoriteCard from './FavoriteCard/FavoriteCard'
-import { useEffect } from 'react'
-import { FavoriteTrip } from '@/Context/Services/Functions/Api'
+import styles from "./FavoriteSection.module.scss";
+import Notif from "../Notif/Notif";
+import FavoriteCard from "./FavoriteCard/FavoriteCard";
+import { useEffect, useState } from "react";
+import { FavoriteTrip } from "@/Context/Services/Functions/Api";
 
 const FavoriteSection = () => {
-
+  const [Data, setData] = useState();
   useEffect(() => {
     FavoriteTrip().then((res) => {
-      console.log(res);
-    })
-  }, [])
+      setData(res.data);
+    });
+  }, []);
   return (
     <div>
       <div
@@ -20,13 +20,22 @@ const FavoriteSection = () => {
         <Notif />
       </div>
       <div className={`${styles.favoriteTrips} grid`}>
-        <FavoriteCard />
-        <FavoriteCard />
-        <FavoriteCard />
-
+        {Data &&
+          Data.map((item) => {
+            return (
+              <FavoriteCard
+                key={item.index}
+                price={item.price}
+                name={item.trip_owner_fullname}
+                from={item.from_city}
+                to={item.to_city}
+                img={item.trip_owner_image}
+              />
+            );
+          })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FavoriteSection
+export default FavoriteSection;
