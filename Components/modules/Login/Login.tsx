@@ -15,6 +15,7 @@ import styles from "./Login.module.scss";
 import { validate } from "@/Context/Services/Functions/validate";
 //primereact
 import { Toast } from "primereact/toast";
+import { login } from "@/Context/Services/Functions/Api";
 const Login = () => {
   const toast = useRef<Toast>(null);
   const [UserData, setUserData] = useState<IUser>({
@@ -62,6 +63,7 @@ const Login = () => {
     event.preventDefault();
 
     if (!Object.keys(errors).length) {
+      login(UserData.email,UserData.password)
       showSuccess();
     } else {
       console.log(errors);

@@ -15,6 +15,7 @@ import styles from "./Signup.module.scss";
 import { validate } from "@/Context/Services/Functions/validate";
 //primereact
 import { Toast } from "primereact/toast";
+import { Api_signup } from "@/Context/Services/Functions/Api";
 const Signup = () => {
   const toast = useRef<Toast>(null);
   const [UserData, setUserData] = useState<IUser>({
@@ -66,6 +67,7 @@ const Signup = () => {
 
     if (!Object.keys(errors).length) {
       console.log(UserData);
+      Api_signup(UserData.email,UserData.password,UserData.FName,UserData.LName,UserData.confirmPassword)
       showSuccess();
     } else {
       console.log("er");

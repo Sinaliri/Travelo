@@ -14,6 +14,7 @@ const TripsRequetCard = () => {
           <div className={`${styles.ownerImage}`}>
             {/* <Image src={} alt=""/> */}
             <img
+            
               src="https://xsgames.co/randomusers/avatar.php?g=male"
               alt=""
             />
