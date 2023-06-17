@@ -19,6 +19,17 @@ const ProfileSection = () => {
       console.log(res.data);
     });
   }, []);
+  const [MyTrips, setMyTrips] = useState([]);
+
+  useEffect(() => {
+    MyTrip().then((res) => {
+      setMyTrips(res.data);
+    });
+  }, []);
+
+  const generateRandomNumber = () => {
+    return Math.floor(Math.random() * 5) + 1;
+  };
 
   return (
     <aside
@@ -50,16 +61,17 @@ const ProfileSection = () => {
       </div>
       <div className={`${styles.YourTrips} w-full flex flex-column`}>
         <h2>Your trips!</h2>
-        <div
-          className={`${styles.altripcontainer} flex flex-column align-items-center overflow-auto`}
-        >
-          <TripCard />
-          <TripCard />
-          <TripCard />
-          <TripCard />
-          <TripCard />
-          <TripCard />
-          <TripCard />
+        <div className={`${styles.altripcontainer} flex flex-column align-items-center overflow-auto`}>
+          {MyTrips.map((item) => (
+            <TripCard
+              key={item?.id}
+              name={item?.trip_owner_fullname}
+              price={item?.price}
+              fromCity={item?.from_city}
+              toCity={item?.to_city}
+              rating={generateRandomNumber()}
+            />
+          ))}
         </div>
       </div>
     </aside>
