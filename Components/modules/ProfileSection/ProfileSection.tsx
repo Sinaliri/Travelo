@@ -29,7 +29,7 @@ const ProfileSection = () => {
       </div>
       <div className={`${styles.YourTrips} w-full flex flex-column`}>
         <h2>Your trips!</h2>
-        <div className={`${styles.altripcontainer} overflow-auto`}>
+        <div className={`${styles.altripcontainer} flex flex-column align-items-center overflow-auto`}>
           <TripCard />
           <TripCard />
           <TripCard />

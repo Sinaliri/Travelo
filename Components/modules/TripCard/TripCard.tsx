@@ -11,8 +11,8 @@ const TripCard = () => {
         <div
             className={`${styles.FavoriteCardContainer} w-auto col-12 lg:col-6 xl:col-4 flex-column mb-4`}
         >
-            <div className={`col-10 flex flex-column align-items-center col-offset-1 ${styles.inner} relative`}
-                style={{ backgroundColor: "#fff" }}>
+            <div className={`col-10 flex flex-column align-items-center ${styles.inner} relative`}
+                style={{ backgroundColor: "#fff" , width : 'fit-content' }}>
                 <div
                     className={`${styles.favTrip} flex align-items-center justify-content-evenly m-2`}
                 >
