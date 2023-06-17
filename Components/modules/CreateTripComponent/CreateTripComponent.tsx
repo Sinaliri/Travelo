@@ -27,7 +27,20 @@ const CreateTripComponent = () => {
         { name: 'Spain', code: 'ES' },
         { name: 'United States', code: 'US' }
     ];
-
+    const [NewTrip,setNewTrip]=useState({
+        Country:"",
+        CityFrom:"",
+        CityTo:"",
+        DayFrom:"",
+        DayTo:"",
+        Transportation:"",
+        Price:"",
+        Descripition:"",
+      })
+      const handler = (name: string, value: string) => {
+        setNewTrip({ ...NewTrip, [name]: value });
+        console.log(NewTrip)
+      };
     const selectedCountryTemplate = (option: Country, props) => {
         if (option) {
             return (
@@ -42,6 +55,7 @@ const CreateTripComponent = () => {
     };
 
     const countryOptionTemplate = (option: Country) => {
+      
         return (
             <div className="flex align-items-center">
                 <img alt={option.name} src="https://primefaces.org/cdn/primereact/images/flag/flag_placeholder.png" className={`mr-2 flag flag-${option.code.toLowerCase()}`} style={{ width: '18px' }} />
@@ -66,18 +80,20 @@ const CreateTripComponent = () => {
                         <Notif />
                     </div>
                     <form className={`grid`}>
-                        <Dropdown value={selectedCountry} onChange={(e) => setSelectedCountry(e.value)} options={countries} optionLabel="name" placeholder="Select a Country"
+                        <Dropdown value={selectedCountry} onChange={(e) => {setSelectedCountry(e.value);setNewTrip(NewTrip.Country=e.value)}} options={countries} optionLabel="name" placeholder="Select a Country"
                             filter valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} className="w-full mt-5"
                             style={{ borderRadius: '10px' }}
                         />
-                        <Input label="City-From" />
-                        <Input label="City-To" />
-                        <Input label="Day-From" />
-                        <Input label="Day-To" />
-                        <Input label="Price" />
-                        <Input label="Transportation" />
+                        <Input label="City-From" type="text" name="CityFrom" value={NewTrip.CityFrom} onChange={handler} />
+                        <Input label="City-To" type="text" name="CityTo" value={NewTrip.CityTo} onChange={handler} />
+                        <Input label="DayFrom" type="text" name="DayFrom" value={NewTrip.DayFrom} onChange={handler} />
+                        <Input label="Day-To" type="text" name="DayTo" value={NewTrip.DayTo} onChange={handler} />
+                        <Input label="Price" type="text" name="Price" value={NewTrip.Price} onChange={handler} />
+                        <Input label="Transportation" type="text" name="Transportation" value={NewTrip.Transportation} onChange={handler} />
+
                         <div className='flex flex-column lg:flex-row align-items-end justify-content-between w-full'>
-                            <Input label="Decription" width="6" height="140px" />
+                        <Input label="Descripition" width="6" height="140px" type="text" name="Descripition" value={NewTrip.Descripition} onChange={handler} />
+
                             <div className={`${styles.buttonContainer} flex justify-content-between lg:justify-content-end align-items-center w-full`}>
                                 <button className={`${styles.submit2}`} type="submit">Create</button>
                                 <button className={`${styles.submit2}`} type="submit">Cancel</button>
