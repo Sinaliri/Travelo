@@ -2,12 +2,20 @@ import Image from "next/image";
 import styles from "./ProfileSection.module.scss";
 import { Rating, RatingChangeEvent } from "primereact/rating";
 import plus from "../../../assets/icons/plus.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FavoriteCard from "../FavoriteSection/FavoriteCard/FavoriteCard";
 import TripCard from "../TripCard/TripCard";
+import { MyTrip } from "@/Context/Services/Functions/Api";
 
 const ProfileSection = () => {
   const [value, setValue] = useState<number>(0);
+
+  useEffect(() => {
+    MyTrip().then((res) => {
+      console.log(res);
+      
+    })
+  }, [])
 
   return (
     <aside
@@ -23,7 +31,6 @@ const ProfileSection = () => {
           <Image className={`${styles.profileImagechange}`} src={plus} alt="" />
         </div>
         <span className={`${styles.profileName} `}>alireaza kiani</span>
-        {/* rate */}
         <Rating className='justify-content-end'
           value={value} onChange={(e: RatingChangeEvent) => setValue(e.value)} cancel={false} />
       </div>

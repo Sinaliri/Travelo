@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 export const url = "http://192.168.1.102:8000/api/v1/";
 export const base_url = url;
@@ -7,7 +8,11 @@ let defaultApi = axios.create({
   baseURL: base_url,
 });
 
-// const accessToken = localStorage.getItem("accessToken");
+if (typeof window !== 'undefined') {
+  var token = localStorage.getItem("accessToken");
+}
+
+
 
 export const login = (phone_or_email: string, password: string) => {
   return defaultApi({
@@ -37,6 +42,43 @@ export const signUp = (
       last_name,
       password,
       password2,
+    },
+  })
+    .then((res) => res)
+    .catch((err) => err);
+};
+
+export const People = () => {
+  return defaultApi({
+    method: "get",
+    url: `${base_url}user-detail/people/`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res)
+    .catch((err) => err);
+};
+
+
+export const FavoriteTrip = () => {
+  return defaultApi({
+    method: "get",
+    url: `${base_url}user-detail/favorite/trip/`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res)
+    .catch((err) => err);
+};
+
+export const MyTrip = () => {
+  return defaultApi({
+    method: "get",
+    url: `${base_url}user-detail/mytrip/`,
+    headers: {
+      Authorization: `Bearer ${token}`,
     },
   })
     .then((res) => res)

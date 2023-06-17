@@ -41,6 +41,7 @@ const Signup = () => {
     if (!Object.keys(errors).length) {
       signUp(UserData.email, UserData.FName, UserData.LName, UserData.password, UserData.confirmPassword).then((res) => {
         if (res.status === 201) {
+          localStorage.setItem('accessToken', res.data.access)
           showSuccess();
         }
         else ErrorToast(res.response.data.error)

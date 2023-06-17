@@ -61,29 +61,41 @@ const Login = () => {
   };
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+  };
 
-    if (!Object.keys(errors).length) {
-      login(UserData.email, UserData.password)
-      showSuccess();
-    } else {
-      console.log(errors);
-
-      showError();
-      setTouch({
-        FName: true,
-        LName: true,
-        email: true,
-        password: true,
-        confirmPassword: true,
-        isAccepted: true,
-      });
-    }
+  const ErrorToast = (text: string) => {
+    toast.current?.show({
+      severity: "error",
+      summary: "Error",
+      detail: text,
+      life: 3000,
+    });
   };
 
   const loginClick = () => {
     login(UserData.email, UserData.password).then((res) => {
-      console.log(res);
+      if (!Object.keys(errors).length) {
+        if (res.status === 200) {
+          localStorage.setItem('accessToken', res.data.access)
+          showSuccess();
+        }
+        else {
+          console.log(res);
 
+          ErrorToast(res.response.data.error)
+        }
+      }
+      else {
+        showError();
+        setTouch({
+          FName: true,
+          LName: true,
+          email: true,
+          password: true,
+          confirmPassword: true,
+          isAccepted: true,
+        });
+      }
     });
   }
   return (

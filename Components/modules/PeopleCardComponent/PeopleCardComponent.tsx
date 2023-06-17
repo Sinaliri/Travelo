@@ -10,35 +10,43 @@ interface PersonData {
     socialMedia: string;
     pets: string;
     workout: string;
-    image: any
+    image: any;
 }
 
-const PeopleCardComponent = (props: {
-    data: PersonData[];
-}) => {
-    const { data } = props;
+interface PeopleCardComponentProps extends PersonData { }
+
+const PeopleCardComponent = (props: PeopleCardComponentProps) => {
+    const {
+        name,
+        career,
+        education,
+        livingIn,
+        personality,
+        socialMedia,
+        pets,
+        workout,
+        image,
+    } = props;
 
     return (
         <div className="PeopleCardComponent py-7 px-4" style={{ background: '#CFCFCF', width: 'fit-content', borderRadius: '50px' }}>
-            {data.map((person, index) => (
-                <div key={index} className='text-sm'>
-                    <h3 className='mb-4 text-xl font-normal'>{person.name}</h3>
-                    <div className='flex'>
-                        <div className='mr-4'>
-                            <Image src={person.image} alt='' style={{width : '200px' , height : '150px'}}/>
-                        </div>
-                        <div className='flex flex-column justify-content-between'>
-                            <p>Career: {person.career}</p>
-                            <p>Education: {person.education}</p>
-                            <p>Living in: {person.livingIn}</p>
-                            <p>Personality: {person.personality}</p>
-                            <p>Social Media: {person.socialMedia}</p>
-                            <p>Pets: {person.pets}</p>
-                            <p>Workout: {person.workout}</p>
-                        </div>
+            <div className='text-sm'>
+                <h3 className='mb-4 text-xl font-normal'>{name}</h3>
+                <div className='flex'>
+                    <div className='mr-4'>
+                        <Image src={image} alt='' style={{ width: '200px', height: '150px' }} />
+                    </div>
+                    <div className='flex flex-column justify-content-between'>
+                        <p>Career: {career}</p>
+                        <p>Education: {education}</p>
+                        <p>Living in: {livingIn}</p>
+                        <p>Personality: {personality}</p>
+                        <p>Social Media: {socialMedia}</p>
+                        <p>Pets: {pets}</p>
+                        <p>Workout: {workout}</p>
                     </div>
                 </div>
-            ))}
+            </div>
         </div>
     );
 };
