@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Rating, RatingChangeEvent } from "primereact/rating";
 
-const DriverCard = () => {
+const DriverCard = (props:{rate:number}) => {
     const [value, setValue] = useState<number>(0);
 
     return (
@@ -13,7 +13,7 @@ const DriverCard = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras leo quam, suscipit tempus leo sit amet
             </p>
             <Rating className='justify-content-end'
-                value={value} onChange={(e: RatingChangeEvent) => setValue(e.value)} cancel={false} />
+                value={Math.ceil(props.rate)} readOnly cancel={false}/>
         </div>
     );
 };

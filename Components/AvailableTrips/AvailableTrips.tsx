@@ -1,23 +1,35 @@
-import React from 'react';
-import AvailableTripsCard from './AvailableTripsCard/AvailableTripsCard';
-import CommonButtonWithRadius from '../CommonComponents/CommonButtonWithRadius/CommonButtonWithRadius';
+import React, { useEffect, useState } from "react";
+import AvailableTripsCard from "./AvailableTripsCard/AvailableTripsCard";
+import CommonButtonWithRadius from "../CommonComponents/CommonButtonWithRadius/CommonButtonWithRadius";
+import { MainPageTrip } from "@/Context/Services/Functions/Api";
+import { ITrip } from "@/Context/Services/Functions/interfaces";
 
-const AvailableTrips = () => {
-    const tripCards = Array.from({ length: 3 }, (_, index) => (
-        <AvailableTripsCard key={index} />
-    ));
+const AvailableTrips = (props: { Trips:any }) => {
+    const {Trips}=props;
+    const [more,setMore]=useState(true)
+  // const tripCards = Array.from({ length: 3 }, (_, index) => (
+  //
+  // ));
 
-    return (
-        <div className='px-4 my-5 align-items-center'>
-            <h2 className='text-3xl font-normal'> Available trips for Now! </h2>
-            <div className='flex align-items-center' style={{gap : '230px'}}> 
-                <div className='my-3 flex' style={{ gap: '20px' }}>
-                    {tripCards}
-                </div>
-                <CommonButtonWithRadius text='More' bgColor='#D9D9D9' />
-            </div>
+  return (
+    <div className="px-4 my-5 align-items-center">
+      <h2 className="text-3xl font-normal"> Available trips for Now! </h2>
+      <div className="flex align-items-center" style={{ gap: "230px" }}>
+        <div className="my-3 flex" style={{ gap: "20px" }}>
+          {
+          (Trips && more ) &&
+          Trips.slice(0,3).map((item:any) => {
+           return <AvailableTripsCard key={item.index} from={item.from_city} to={item.to_city} price={item.price} ownername={item.trip_owner_fullname} image={item.trip_owner_image}/>;
+          })
+       
+
+          }
+          {/* {tripCards} */}
         </div>
-    );
+        <CommonButtonWithRadius text="More" bgColor="#D9D9D9" handler={()=>{setMore(!more)}}/>
+      </div>
+    </div>
+  );
 };
 
 export default AvailableTrips;
