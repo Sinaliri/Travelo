@@ -9,6 +9,8 @@ import image from '../assets/images/womanAdvertise.png'
 import image2 from '../assets/images/womanWithBag.png'
 import GallerySection from '@/Components/GallerySection/GallerySection'
 import Footer from '@/Components/Footer/Footer'
+import { useEffect, useState } from 'react'
+import { MainPageTrip } from '@/Context/Services/Functions/Api'
 
 export default function Home() {
 
@@ -26,13 +28,25 @@ export default function Home() {
     { text: 'Send your photos!', fontSize: 'xl' },
     { text: 'Enjoy the moment!', fontSize: 'xl' },
   ];
+  const [data, setData] = useState({});
+  useEffect(() => {
 
+    const fetchData = async () => {
+      const result =await MainPageTrip();
+      console.log(result)
+      setData(result);
+    };
+
+    fetchData();
+    // console.log(data.best_driver)
+  }, []);
   return (
     <div className='dashboard' style={{ fontFamily: 'Inter' }}>
       <div className='dashboard__heroSection'>
-        <HeroSection />
+        <HeroSection Driver={data.best_driver}  />
+        
       </div>
-      <AvailableTrips />
+      <AvailableTrips Trips={data.trip_for_now} />
       <FeaturesSection featureItems={featureItems} image={image} />
       <GallerySection />
       <FeaturesSection featureItems={featureItems2} image={image2} />
