@@ -84,6 +84,20 @@ export const Api_signup = async (
       .then((res) =>{return res.data})
       .catch((err) => console.log("err" + err))
   };
+  export const SearchEngine = (from_city: string, to_city: string , day_to: string , price:number) => {
+  return defaultApi({
+    method: "get",
+    url: `${base_url}search/trip/`,
+    data: {
+      from_city,
+      to_city,
+      day_to,
+      price,
+    },
+  })
+    .then((res) => {return res.data})
+    .catch((err) => err);
+};
 
 
 
