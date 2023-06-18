@@ -10,23 +10,24 @@ interface FeatureItem {
 interface FeaturesSectionProps {
     image: any;
     featureItems: FeatureItem[];
+    link?:string
     
 }
 
-const FeaturesSection: React.FC<FeaturesSectionProps> = ({ image, featureItems }) => {
+const FeaturesSection: React.FC<FeaturesSectionProps> = ({ image, featureItems , link}) => {
     return (
-        <div className='FeaturesSection mb-4 flex flex-row mx-4' style={{ background: '#D9D9D9', borderRadius: '50px' }}>
+        <div className='FeaturesSection mb-4 flex flex-column md:flex-row mx-4' style={{ background: '#D9D9D9', borderRadius: '50px' }}>
             <div style={{ flex: '1' }}>
-                <Image src={image} alt='' />
+                <Image src={image} className="w-full" alt='' />
             </div>
             <div style={{ flex: '2' }}>
-                <div className='flex flex-column gap-4 m-6'>
+                <div className='flex flex-column  gap-4 m-6'>
                     {featureItems.map((item, index) => (
                         <h3 key={index} className={`text-${item.fontSize} font-normal`}>{item.text}</h3>
                     ))}
                 </div>
-                <div className='flex justify-content-center'>
-                    <CommonButtonWithRadius text='Choose a trip!' bgColor='#fff' bothSideRadius={true} fontSize={20} />
+                <div className='flex justify-content-center mb-2'>
+                    <CommonButtonWithRadius text='Choose a trip!' bgColor='#fff' bothSideRadius={true} fontSize={20} link={link} />
                 </div>
             </div>
         </div>

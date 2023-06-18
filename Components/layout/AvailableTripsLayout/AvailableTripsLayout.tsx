@@ -6,11 +6,22 @@ import insta from "../../../assets/images/instagram.svg";
 import briefCase from "../../../assets/images/availableTrip.svg";
 import AllTrips from "@/Components/modules/AllTrips/AllTrips";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Api_search } from "@/Context/Services/Functions/Api";
+import { MainContext, mainContextType } from "@/Context/Services/Procider/Provider";
+import { url } from "inspector";
 const AvailableTripsLayout = () => {
-  const [SearchoptionState,setSearchoptionState]=useState({
-    
-  })
+  const { setAvailableTripsRequest , AvailableTripsRequest}=useContext<mainContextType>(MainContext)
+  // const [AvailableTrips,setAvailabeTrips]=useState()
+  useEffect(() => {
+    Api_search(`search/trip/`).then((res) => {
+        console.log(res);
+        setAvailableTripsRequest(res.data);
+       
+    });
+}, []);
+    console.log(AvailableTripsRequest)
+
   return (
     <div className={`${styles.wrapper} relative`}>
     <div className={`${styles.AvailableTripsContainer} `}>
@@ -22,7 +33,7 @@ const AvailableTripsLayout = () => {
       </div>
     </div>
       <div className={`grid-nogutter${styles.AlltripsSection}`}>
-        <AllTrips/>
+        <AllTrips alltrips={AvailableTripsRequest}/>
       </div>
     </div>
   );

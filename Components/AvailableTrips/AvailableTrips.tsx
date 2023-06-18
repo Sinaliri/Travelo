@@ -16,7 +16,7 @@ const AvailableTrips = (props: { Trips: any }) => {
     <div className="px-4 my-5 align-items-center">
       <h2 className="text-3xl font-normal"> Available trips for Now! </h2>
       <div className="flex align-items-center overflow-x-auto" style={{ gap: "230px" }}>
-        <div className={`my-3 flex `} style={{ gap: "20px" }}>
+        <div className={`my-3 flex `} style={{ gap: "30px" }}>
           {Trips &&
             more &&
             Trips?.slice(0, 3).map((item: any) => {

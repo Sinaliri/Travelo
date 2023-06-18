@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Dropdown, DropdownChangeEvent } from "primereact/dropdown";
+import { MainContext, mainContextType } from "@/Context/Services/Procider/Provider";
 
-interface IPrice {
+export interface IPrice {
     name: number;
 }
 
 const Price = () => {
-  const [selectedMaxPrice, setSelectedMaxPrice] = useState<IPrice | null>(null);
+  const {selectedMaxPrice, setSelectedMaxPrice} = useContext<mainContextType>(MainContext)
   const Prices: IPrice[] = [
-    { name: 100 },
-    { name: 200 },
-    { name: 300 },
-    { name: 400 },
-    { name: 500 },
+    { name: 100000 },
+    { name: 200000 },
+    { name: 300000},
+    { name: 400000 },
+    { name: 500000 },
   ];
 
   return (
@@ -24,7 +25,7 @@ const Price = () => {
         optionLabel="name"
         editable
         placeholder="Select Maximum price "
-        className="w-full md:w-14rem"
+        className="w-full"
       />
     </div>
   );

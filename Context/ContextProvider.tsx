@@ -8,7 +8,9 @@ export interface IUser {
   confirmPassword: string;
   isAccepted: boolean;
 }
-
+export interface City {
+  name: string;
+}
 export interface Itouch {
   LName?: boolean;
   FName?: boolean;
@@ -41,13 +43,15 @@ export interface IUserSetting{
 }
 
 
-interface IDataContext {
+export interface IDataContext {
   UserData: IUser,
   setUserData: Dispatch<SetStateAction<IUser>>,
   UserSetting: IUserSetting,
   setUserSetting: Dispatch<SetStateAction<IUserSetting>>,
   sidebarVisible:boolean,
-  setSidebarVisible:Dispatch<SetStateAction<boolean>>
+  setSidebarVisible:Dispatch<SetStateAction<boolean>>,
+  selectedCity:City | null, 
+  setSelectedCity:Dispatch<SetStateAction<City>>,
 
 }
 
@@ -72,7 +76,9 @@ const ContextProvider = ({ children }: ContextProviderProps) => {
     Workout:"",
     Descripition:"",
   })
- 
+  
+  const [selectedCity, setSelectedCity] = useState<City | null>(null);
+
   const [UserData, setUserData] = useState<IUser>({
     FName: "",
     LName: "",
@@ -83,7 +89,7 @@ const ContextProvider = ({ children }: ContextProviderProps) => {
   });
 
   return (
-    <DataContext.Provider value={{ UserData, setUserData ,sidebarVisible, setSidebarVisible , UserSetting ,setUserSetting}}>
+    <DataContext.Provider value={{ UserData, setUserData ,sidebarVisible, setSidebarVisible , UserSetting ,setUserSetting ,selectedCity, setSelectedCity}}>
       {children}
     </DataContext.Provider>
   );

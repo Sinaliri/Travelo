@@ -4,7 +4,10 @@ import Image from "next/image";
 //images
 import like from "../../../assets/images/like.svg";
 import dislike from "../../../assets/images/dislike.svg";
-const TripsRequetCard = () => {
+import { Rating } from "primereact/rating";
+const TripsRequetCard = (props:{item:any}) => {
+  const{item}=props
+  // console.log(item)
   return (
     <div className={`${styles.RequestCard} grid`}>
       <div className={`${styles.RequestDetail} col-12 lg:col-5 grid`}>
@@ -15,21 +18,21 @@ const TripsRequetCard = () => {
             {/* <Image src={} alt=""/> */}
             <img
             
-              src="https://xsgames.co/randomusers/avatar.php?g=male"
-              alt=""
+            src={`http://localhost:8000/${item.trip_owner_image}`}
+            alt=""
             />
           </div>
-          <span className={`${styles.ownerPrice}`}>100 T</span>
+          <span className={`${styles.ownerPrice}`}>{item.price} T</span>
           <div
             className={`${styles.rate} flex justify-content-between align-items-center w-full flex-nowrap`}
           >
             <div className={`${styles.like} flex mr-2`}>
               <Image src={like} alt="like.svg" />
-              <span className={`${styles.like} ml-2`}>30002</span>
+              <span className={`${styles.like} ml-2`}>{item.like_count}</span>
             </div>
             <div className={`${styles.dislike} flex`}>
               <Image src={dislike} alt="dislike.svg" />
-              <span className={`${styles.dislike} ml-2`}>25</span>
+              <span className={`${styles.dislike} ml-2`}>{item.dislike_count}</span>
             </div>
           </div>
         </div>
@@ -37,42 +40,27 @@ const TripsRequetCard = () => {
           <h4
             className={`${styles.Destination} w-full flex justify-content-start`}
           >
-            <span className="w-full">{`semnan > tehran`}</span>
+            <span className="w-full">{`${item.from_city} > ${item.to_city}`}</span>
           </h4>
-          <span className={`${styles.TripsOwner}`}>Owner</span>
-          <span>RAte</span>
+          <span className={`${styles.TripsOwner}`}>{item.fullname}</span>
+          <span>
+          <Rating className='justify-content-start'
+                value={Math.ceil(item.rate)} readOnly cancel={false}/>
+
+          </span>
         </div>
       </div>
       <div className={`${styles.RequestDescription} col-12 lg:col-5 `}>
         <h4 className={`${styles.Description}`}>Description</h4>
         {/* text should be here */}
         <p>
-          Windows talking painted pasture yet its express parties use. Sure last
-          upon he same as knew next. Of believed or diverted no rejoiced. End
-          friendship sufficient assistance can prosperous met. As game he show
-          it park do. Was has unknown few certain ten promise. No finished my an
-          likewise cheerful packages we.{" "}
-          Windows talking painted pasture yet its express parties use. Sure last
-          upon he same as knew next. Of believed or diverted no rejoiced. End
-          friendship sufficient assistance can prosperous met. As game he show
-          it park do. Was has unknown few certain ten promise. No finished my an
-          likewise cheerful packages we.{" "}
-          Windows talking painted pasture yet its express parties use. Sure last
-          upon he same as knew next. Of believed or diverted no rejoiced. End
-          friendship sufficient assistance can prosperous met. As game he show
-          it park do. Was has unknown few certain ten promise. No finished my an
-          likewise cheerful packages we.{" "}
-          Windows talking painted pasture yet its express parties use. Sure last
-          upon he same as knew next. Of believed or diverted no rejoiced. End
-          friendship sufficient assistance can prosperous met. As game he show
-          it park do. Was has unknown few certain ten promise. No finished my an
-          likewise cheerful packages we.{" "}
+          {item.description}
         </p>
       </div>
       <div
         className={`${styles.RequestButton} col-12 lg:col-2  flex justify-content-center align-items-end`}
       >
-        <Button className={`${styles.sendButton}`}>Send request</Button>
+        <Button id={item.id} className={`${styles.sendButton}`}>Send request</Button>
       </div>
     </div>
   );

@@ -47,9 +47,9 @@ export default function Home() {
         
       </div>
       <AvailableTrips Trips={data?.trip_for_now} />
-      <FeaturesSection featureItems={featureItems} image={image} />
+      <FeaturesSection featureItems={featureItems} image={image} link='./availabletrips' />
       <GallerySection />
-      <FeaturesSection featureItems={featureItems2} image={image2} />
+      <FeaturesSection featureItems={featureItems2} image={image2} link="./people" />
       <Footer />
 
     </div>

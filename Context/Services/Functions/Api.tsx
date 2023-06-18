@@ -121,7 +121,7 @@ export const ChangeProfile = (changedData) => {
   return defaultApi({
     method: "put",
     url: `${base_url}user-detail/profile/`,
-    data: changedData,
+    data: {},
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -140,21 +140,73 @@ export const UserProfile = () => {
     .then((res) => res)
     .catch((err) => err);
 };
-<<<<<<< HEAD
 export const AddToFavorite_api = (id:string) => {
   return defaultApi({
     method: "get",
     url: `${base_url}add-to-favorite/trip/${id}/`,
-=======
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res)
+    .catch((err) => err);
+};
 
 
 export const Contacts = () => {
   return defaultApi({
     method: "get",
     url: `${base_url}messenger/contacts`,
->>>>>>> 4f2fabfd23348c490832a12244540016274f7904
     headers: {
       Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res)
+    .catch((err) => err);
+};
+export const Api_search = (
+  url?:string,
+  from_city?: string,
+  to_city?: string,
+  moving_date?: string,
+  price?: number,
+) => {
+  console.log(from_city)
+  console.log(to_city)
+  console.log(moving_date)
+  console.log(price)
+  return defaultApi({
+    method: "get",
+    url: `${base_url}search/trip/`,
+    data: {
+      from_city,
+      to_city,
+      moving_date,
+      price,
+    },
+  })
+    .then((res) => res)
+    .catch((err) => err);
+};
+export const Api_search2 = (
+  from_city?: string,
+  to_city?: string,
+  moving_date?: string,
+  price?: number,
+) => {
+  console.log(from_city)
+  console.log(to_city)
+  console.log(moving_date)
+  console.log(price)
+  return defaultApi({
+    method: "get",
+     url: `${base_url}search/trip/?from_city=${from_city}&to_city=${to_city}&moving_date=${moving_date}&price=${price}`,
+    // url: `${base_url}${url}`,
+    data: {
+      from_city,
+      to_city,
+      moving_date,
+      price,
     },
   })
     .then((res) => res)

@@ -17,7 +17,7 @@ const AvailableTripsCard = (props:{from:string,to:string,price:number,ownername:
     }
     return (
         <div className='AvailableTripsCard flex flex-column p-5'
-            style={{ background: '#D9D9D9', width: 'fit-content', borderRadius: '40px' }}
+            style={{ background: '#D9D9D9', width: '340px', borderRadius: '40px' }}
         >
             <div className='flex'>
                 <div>

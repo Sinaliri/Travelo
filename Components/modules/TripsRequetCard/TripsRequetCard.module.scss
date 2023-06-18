@@ -133,7 +133,7 @@
       }
     }
     p {
-      overflow-y: scroll;
+      overflow-y: auto;
       @include scroolbar;
       height: 120px;
       @include font(16px, 400);

@@ -4,13 +4,15 @@ import Image from 'next/image';
 import pointer from '../../../assets/images/pointer.svg'
 import CommonButton from '@/Components/CommonComponents/CommonButton/CommonButton';
 import home from '../../../assets/images/home.svg'
+import Link from 'next/link';
 
 const MainSection = () => {
     const names = [
-        'Dashboard',
-        'Create a trip!',
-        'Find your favorite ones!',
-        'Available trips'
+        {text:'Dashboard',link_url:"./profile/Dashboard"},
+        {text:'Create a trip!',link_url:"./create-trip"},
+        {text:'Find your favorite ones!',link_url:"./people"},
+        {text:'Available trips',link_url:"./availabletrips"},
+       
     ];
 
     return (
@@ -30,9 +32,9 @@ const MainSection = () => {
                     style={{ marginTop: '10px' }}
                 >
                     {names.map((name, index) => (
-                        <li className='cursor-pointer flex align-items-center' key={index}>
+                        <li className='cursor-pointer flex align-items-center text-white' key={index}>
                             {index === 0 && <Image src={home} alt='Home' className='mr-2' />}
-                            {name}
+                            <Link className='text-white' href={name.link_url}>{name.text}</Link>
                         </li>
                     ))}
                 </ul>

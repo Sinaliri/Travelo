@@ -30,8 +30,11 @@ export default function App({ Component, pageProps }: AppProps) {
       </MainProvider>
     );
   } else {
-    <MainProvider>
-      return <Component {...pageProps} />;
+    return(
+
+      <MainProvider>
+      <Component {...pageProps} />;
     </MainProvider>
+      )
   }
 }
