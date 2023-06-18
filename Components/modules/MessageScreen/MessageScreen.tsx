@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import MessageInput from './MessageInput/MessageInput';
 import MessageComponent from './MessageComponent/MessageComponent';
+import { MainContext, mainContextType } from '../../../Context/Services/Procider/Provider';
 
 const MessageScreen = () => {
+    const { contactId } = useContext<mainContextType>(MainContext);
+
+    console.log(contactId);
+    
     return (
         <div className='MessageScreen'>
             <div className='MessageScreen__MessageInput'>
@@ -14,7 +19,6 @@ const MessageScreen = () => {
                 <MessageComponent content='Windows talking painted pasture yet its express parties use.' position='right' />
                 <MessageComponent content='Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no rejoiced. End friendship sufficient assistance can prosperous met.' position='left' />
                 <MessageComponent content='byee!' position='right' />
-
             </div>
         </div>
     );

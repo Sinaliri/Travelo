@@ -111,7 +111,7 @@ export const MyTrip = () => {
     .catch((err) => err);
 };
 export const ChangeProfile = (changedData) => {
-  const data= {};
+  const data = {};
   Object.keys(changedData).forEach((key) => {
     if (changedData[key]?.length > 0) {
       data[key] = changedData[key];
@@ -126,8 +126,8 @@ export const ChangeProfile = (changedData) => {
       Authorization: `Bearer ${token}`,
     },
   })
-  .then((res) => res)
-  .catch((err) => err);
+    .then((res) => res)
+    .catch((err) => err);
 };
 export const UserProfile = () => {
   return defaultApi({
@@ -140,10 +140,19 @@ export const UserProfile = () => {
     .then((res) => res)
     .catch((err) => err);
 };
+<<<<<<< HEAD
 export const AddToFavorite_api = (id:string) => {
   return defaultApi({
     method: "get",
     url: `${base_url}add-to-favorite/trip/${id}/`,
+=======
+
+
+export const Contacts = () => {
+  return defaultApi({
+    method: "get",
+    url: `${base_url}messenger/contacts`,
+>>>>>>> 4f2fabfd23348c490832a12244540016274f7904
     headers: {
       Authorization: `Bearer ${token}`,
     },

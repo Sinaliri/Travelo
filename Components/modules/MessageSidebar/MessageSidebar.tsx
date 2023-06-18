@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import { Contacts } from '@/Context/Services/Functions/Api';
+import React, { useEffect, useState } from 'react';
 
 const MessageSidebar = () => {
-    const users = ['Alireza Kiani', 'Amir Soltani', 'Siavash Ghanepor'];
+    const [users, setUsers] = useState([])
     const [selectedItem, setSelectedItem] = useState(null);
 
     const handleItemClick = (item) => {
         setSelectedItem(item);
     };
+
+    useEffect(() => {
+        Contacts().then((res) => {
+            setUsers(res.data)
+        })
+    }, [])
 
     return (
         <div className="MessageSidebar h-full py-5" style={{ background: '#FFE588', borderRadius: '50px 50px 0px 0px' }}>
@@ -18,13 +25,13 @@ const MessageSidebar = () => {
                         key={item}
                         onClick={() => handleItemClick(item)}
                         style={{
-                            width : '103%',
+                            width: '103%',
                             backgroundColor: selectedItem === item ? '#CFCFCF' : 'transparent',
                             padding: '10px 30px',
                         }}
                     >
                         <img src="https://xsgames.co/randomusers/avatar.php?g=male" className="mr-3" style={{ borderRadius: '50%', width: '3rem', height: '3rem' }} alt="Avatar" />
-                        {item}
+                        {item.user_fullname}
                     </div>
                 ))}
             </div>
