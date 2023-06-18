@@ -140,3 +140,14 @@ export const UserProfile = () => {
     .then((res) => res)
     .catch((err) => err);
 };
+export const AddToFavorite_api = (id:string) => {
+  return defaultApi({
+    method: "get",
+    url: `${base_url}add-to-favorite/trip/${id}/`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res)
+    .catch((err) => err);
+};
