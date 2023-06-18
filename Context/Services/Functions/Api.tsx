@@ -140,37 +140,37 @@ export const ChangeProfile = (userdail: any) => {
     telegram,
     workout,
     description,
+    
   } = userdail;
-  const formdate=new FormData();
   const formData = new FormData();
 
-  formData.append("age", 14);
-  formData.append("birthdate", "2009-02-16");
-  formData.append("career", "Financial adviser");
-  formData.append("completion_percentage", 100);
-  formData.append("created_at", "2023-06-18T21:15:15.490249+03:30");
-  formData.append("description", "Little indicate together training speech research leg analysis. Hit social road degree will thousand word. Foot physical read shoulder real involve education. Stock century kitchen power political. Morning write political study.");
-  formData.append("education", "Computer Engineering");
-  formData.append("email", "sina.liri@yahoo.com");
-  formData.append("first_name", "Suzanne");
-  formData.append("gender", "Female");
-  // formData.append("image", <file object representing the image>);
-  formData.append("instagram", "instagram-2583590646");
-  formData.append("is_verified", false);
-  formData.append("last_name", "Armstrong");
-  formData.append("living_in", "Jacksonmouthss");
-  formData.append("marital_status", "married");
-  formData.append("personality_type", "Introverted");
-  formData.append("phone_number", "+98912 3456 789");
-  formData.append("pk", 1);
-  formData.append("telegram", "telegram-2259932400");
-  formData.append("updated_at", "2023-06-18T21:50:20.377280+03:30");
-  formData.append("workout", "tennis");
+  formData.append("age", userdail.age);
+  formData.append("birthdate", userdail.birthdate);
+  formData.append("career", career);
+  formData.append("completion_percentage", userdail.completion_percentage);
+  formData.append("created_at", userdail.created_at);
+  formData.append("description", description);
+  formData.append("education", education);
+  formData.append("email", email);
+  formData.append("first_name", first_name);
+  formData.append("gender", userdail.gender);
+  formData.append("image", userdail.image);
+  formData.append("instagram", userdail.instagram);
+  formData.append("is_verified", userdail.false);
+  formData.append("last_name", last_name);
+  formData.append("living_in",living_in);
+  formData.append("marital_status", userdail.marital_status);
+  formData.append("personality_type", personality_type);
+  formData.append("phone_number", userdail.phone_number);
+  formData.append("pk", userdail.pk);
+  formData.append("telegram", userdail.telegram);
+  formData.append("updated_at", userdail.updated_at);
+  formData.append("workout", workout);
   return defaultApi({
     method: "put",
     url: `${base_url}user-detail/profile/`,
     data: {
-     formdate
+     formData
     },
     headers: {
       Authorization: `Bearer ${token}`,
