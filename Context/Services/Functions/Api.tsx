@@ -111,7 +111,7 @@ export const MyTrip = () => {
     .catch((err) => err);
 };
 export const ChangeProfile = (changedData) => {
-  const data= {};
+  const data = {};
   Object.keys(changedData).forEach((key) => {
     if (changedData[key]?.length > 0) {
       data[key] = changedData[key];
@@ -126,13 +126,26 @@ export const ChangeProfile = (changedData) => {
       Authorization: `Bearer ${token}`,
     },
   })
-  .then((res) => res)
-  .catch((err) => err);
+    .then((res) => res)
+    .catch((err) => err);
 };
 export const UserProfile = () => {
   return defaultApi({
     method: "get",
     url: `${base_url}user-detail/profile/`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res)
+    .catch((err) => err);
+};
+
+
+export const Contacts = () => {
+  return defaultApi({
+    method: "get",
+    url: `${base_url}messenger/contacts`,
     headers: {
       Authorization: `Bearer ${token}`,
     },

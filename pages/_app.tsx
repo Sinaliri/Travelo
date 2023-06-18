@@ -14,6 +14,7 @@ import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import ProfileLayout from "@/Components/layout/ProfileLayout/ProfileLayout";
+import MainProvider from "@/Context/Services/Procider/Provider";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -22,11 +23,15 @@ export default function App({ Component, pageProps }: AppProps) {
 
   if (url === "profile") {
     return (
-      <ProfileLayout>
-        <Component {...pageProps} />
-      </ProfileLayout>
+      <MainProvider>
+        <ProfileLayout>
+          <Component {...pageProps} />
+        </ProfileLayout>
+      </MainProvider>
     );
   } else {
-    return <Component {...pageProps} />;
+    <MainProvider>
+      return <Component {...pageProps} />;
+    </MainProvider>
   }
 }
