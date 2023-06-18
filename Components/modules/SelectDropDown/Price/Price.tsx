@@ -25,7 +25,7 @@ const Price = () => {
         optionLabel="name"
         editable
         placeholder="Select Maximum price "
-        className="w-full"
+        className="w-fitcontent"
       />
     </div>
   );

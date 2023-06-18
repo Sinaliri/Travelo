@@ -9,14 +9,15 @@
       }
     }
     .buttonContainer {
+      margin-bottom: 10px;
       .resultButton {
         font: {
-          size: 20px !important;
+          size: 16px !important;
           weight: 400;
         }
         background-color: $CardColor;
-        width: 180px;
-        height: 50px;
+        width: fit-content;
+        height: 44px;
         border: none;
       }
     }

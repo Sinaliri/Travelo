@@ -1,3 +1,4 @@
+import { IUserSetting } from "@/Context/ContextProvider";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -46,8 +47,16 @@ export const signUp = (
     .catch((err) => err);
 };
 
-export const CreateTrip = (owner: number, country: string, from_city: string, to_city: string,
-  moving_day: string, day_to: string, Transportstion: string, price: number, description: string
+export const CreateTrip = (
+  owner: number,
+  country: string,
+  from_city: string,
+  to_city: string,
+  moving_day: string,
+  day_to: string,
+  Transportstion: string,
+  price: number,
+  description: string
 ) => {
   return defaultApi({
     method: "post",
@@ -56,13 +65,20 @@ export const CreateTrip = (owner: number, country: string, from_city: string, to
       Authorization: `Bearer ${token}`,
     },
     data: {
-      owner, country, from_city, to_city, moving_day, day_to, Transportstion, price, description
+      owner,
+      country,
+      from_city,
+      to_city,
+      moving_day,
+      day_to,
+      Transportstion,
+      price,
+      description,
     },
   })
     .then((res) => res)
     .catch((err) => err);
 };
-
 
 export const MainPageTrip = () => {
   return defaultApi({
@@ -110,20 +126,55 @@ export const MyTrip = () => {
     .then((res) => res)
     .catch((err) => err);
 };
-export const ChangeProfile = (changedData) => {
-  const data = {};
-  Object.keys(changedData).forEach((key) => {
-    if (changedData[key]?.length > 0) {
-      data[key] = changedData[key];
-    }
-  });
-  console.log(Object.keys(changedData))
+export const ChangeProfile = (userdail: any) => {
+  // console.log(Object.keys(userde))
+  const {
+    first_name,
+    last_name,
+    email,
+    phone_number,
+    career,
+    education,
+    living_in,
+    personality_type,
+    telegram,
+    workout,
+    description,
+  } = userdail;
+  const formdate=new FormData();
+  const formData = new FormData();
+
+  formData.append("age", 14);
+  formData.append("birthdate", "2009-02-16");
+  formData.append("career", "Financial adviser");
+  formData.append("completion_percentage", 100);
+  formData.append("created_at", "2023-06-18T21:15:15.490249+03:30");
+  formData.append("description", "Little indicate together training speech research leg analysis. Hit social road degree will thousand word. Foot physical read shoulder real involve education. Stock century kitchen power political. Morning write political study.");
+  formData.append("education", "Computer Engineering");
+  formData.append("email", "sina.liri@yahoo.com");
+  formData.append("first_name", "Suzanne");
+  formData.append("gender", "Female");
+  // formData.append("image", <file object representing the image>);
+  formData.append("instagram", "instagram-2583590646");
+  formData.append("is_verified", false);
+  formData.append("last_name", "Armstrong");
+  formData.append("living_in", "Jacksonmouthss");
+  formData.append("marital_status", "married");
+  formData.append("personality_type", "Introverted");
+  formData.append("phone_number", "+98912 3456 789");
+  formData.append("pk", 1);
+  formData.append("telegram", "telegram-2259932400");
+  formData.append("updated_at", "2023-06-18T21:50:20.377280+03:30");
+  formData.append("workout", "tennis");
   return defaultApi({
     method: "put",
     url: `${base_url}user-detail/profile/`,
-    data: {},
+    data: {
+     formdate
+    },
     headers: {
       Authorization: `Bearer ${token}`,
+      "Content-Type":"multipart/form-data"
     },
   })
     .then((res) => res)
@@ -140,7 +191,7 @@ export const UserProfile = () => {
     .then((res) => res)
     .catch((err) => err);
 };
-export const AddToFavorite_api = (id:string) => {
+export const AddToFavorite_api = (id: string) => {
   return defaultApi({
     method: "get",
     url: `${base_url}add-to-favorite/trip/${id}/`,
@@ -151,7 +202,6 @@ export const AddToFavorite_api = (id:string) => {
     .then((res) => res)
     .catch((err) => err);
 };
-
 
 export const Contacts = () => {
   return defaultApi({
@@ -165,16 +215,16 @@ export const Contacts = () => {
     .catch((err) => err);
 };
 export const Api_search = (
-  url?:string,
+  url?: string,
   from_city?: string,
   to_city?: string,
   moving_date?: string,
-  price?: number,
+  price?: number
 ) => {
-  console.log(from_city)
-  console.log(to_city)
-  console.log(moving_date)
-  console.log(price)
+  console.log(from_city);
+  console.log(to_city);
+  console.log(moving_date);
+  console.log(price);
   return defaultApi({
     method: "get",
     url: `${base_url}search/trip/`,
@@ -192,21 +242,32 @@ export const Api_search2 = (
   from_city?: string,
   to_city?: string,
   moving_date?: string,
-  price?: number,
+  price?: number
 ) => {
-  console.log(from_city)
-  console.log(to_city)
-  console.log(moving_date)
-  console.log(price)
+  console.log(from_city);
+  console.log(to_city);
+  console.log(moving_date);
+  console.log(price);
   return defaultApi({
     method: "get",
-     url: `${base_url}search/trip/?from_city=${from_city}&to_city=${to_city}&moving_date=${moving_date}&price=${price}`,
+    url: `${base_url}search/trip/?from_city=${from_city}&to_city=${to_city}&moving_date=${moving_date}&price=${price}`,
     // url: `${base_url}${url}`,
     data: {
       from_city,
       to_city,
       moving_date,
       price,
+    },
+  })
+    .then((res) => res)
+    .catch((err) => err);
+};
+export const Userprofile_get = () => {
+  return defaultApi({
+    method: "get",
+    url: `${base_url}user-detail/profile/`,
+    headers: {
+      Authorization: `Bearer ${token}`,
     },
   })
     .then((res) => res)

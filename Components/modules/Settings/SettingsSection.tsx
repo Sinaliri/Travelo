@@ -3,10 +3,10 @@ import styles from "./SettingsSection.module.scss";
 
 import Notif from "../Notif/Notif";
 import Input from "../Input/Input";
-import { ChangeEvent, FormEvent, ServerContextJSONValue, useContext, useState } from "react";
+import { ChangeEvent, FormEvent, ServerContextJSONValue, useContext, useEffect, useState } from "react";
 import { DataContext, IUserSetting } from "@/Context/ContextProvider";
-import { ChangeProfile } from "@/Context/Services/Functions/Api";
-interface IUserSetting {
+import { ChangeProfile, Userprofile_get } from "@/Context/Services/Functions/Api";
+export interface IUserSetting {
   first_name?: string;
   last_name?: string;
   email?: string;
@@ -18,10 +18,17 @@ interface IUserSetting {
   description?: string;
   living_in:string,
   telegram:string,
-
-
 }
 const SettingsSection = () => {
+  const [userDetail,setUserDetail]=useState({})
+  useEffect(()=>{
+    Userprofile_get().then((res)=>{
+      setUserDetail(res.data)
+    })
+    
+    
+  },[]);
+  console.log(userDetail)
 
   // const {UserSetting ,setUserSetting}=useContext(DataContext);
   const [UserSetting,setUserSetting]=useState<IUserSetting>({
@@ -38,19 +45,12 @@ const SettingsSection = () => {
     description:"",
   })
   const handler = (name: string, value: string) => {
-    setUserSetting({ ...UserSetting, [name]: value });
-    console.log(UserSetting)
+    setUserDetail({ ...userDetail, [name]: value });
+    console.log(userDetail)
   };
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const changedData = {};
-    Object.keys(UserSetting).forEach(key => {
-      if (UserSetting[key]?.length > 0) {
-        changedData[key] = UserSetting[key];
-      }
-    });
-    console.log(changedData)
-    ChangeProfile(changedData);
+    ChangeProfile(userDetail);
   }
   // console.log(UserSetting)
   return (
@@ -64,21 +64,21 @@ const SettingsSection = () => {
       <div className={`${styles.settingInputs} grid`}>
 
         <form className={`grid`}>
-          <Input label="First name" type="text" name="first_name" value={UserSetting.first_name} onChange={handler} />
-          <Input label="Last name" type="text" name="last_name" value={UserSetting.last_name} onChange={handler} />
-          <Input label="Email address" type="text" name="email" value={UserSetting.email} onChange={handler} />
-          <Input label="Number" type="text" name="phone_number" value={UserSetting.phone_number} onChange={handler} />
-          <Input label="Career" type="text" name="career" value={UserSetting.career} onChange={handler} />
-          <Input label="Education" type="text" name="education" value={UserSetting.education} onChange={handler} />
-          <Input label="Living in" type="text" name="living_in" value={UserSetting.living_in} onChange={handler} />
-          <Input label="Personality Type" type="text" name="personality_type" value={UserSetting.personality_type} onChange={handler} />
+          <Input label="First name" type="text" name="first_name" value={userDetail.first_name} onChange={handler} />
+          <Input label="Last name" type="text" name="last_name" value={userDetail.last_name} onChange={handler} />
+          <Input label="Email address" type="text" name="email" value={userDetail.email} onChange={handler} />
+          <Input label="Number" type="text" name="phone_number" value={userDetail.phone_number} onChange={handler} />
+          <Input label="Career" type="text" name="career" value={userDetail.career} onChange={handler} />
+          <Input label="Education" type="text" name="education" value={userDetail.education} onChange={handler} />
+          <Input label="Living in" type="text" name="living_in" value={userDetail.living_in} onChange={handler} />
+          <Input label="Personality Type" type="text" name="personality_type" value={userDetail.personality_type} onChange={handler} />
           
 
           <div className="grid-nogutter flex-column w- col-12 xl:col-6">
-          <Input label="Social Media" width="12" type="text" name="telegram" value={UserSetting.telegram} onChange={handler} />
-          <Input label="Workout" width="12" type="text" name="workout" value={UserSetting.workout} onChange={handler} />
+          <Input label="Social Media" width="12" type="text" name="telegram" value={userDetail.telegram} onChange={handler} />
+          <Input label="Workout" width="12" type="text" name="workout" value={userDetail.workout} onChange={handler} />
           </div>
-          <Input label="Descripition" width="6" height="140px" type="text" name="description" value={UserSetting.description} onChange={handler} />
+          <Input label="Descripition" width="6" height="140px" type="text" name="description" value={userDetail.description} onChange={handler} />
           <div className={`${styles.buttonContainer} flex justify-content-end align-items-center w-full`}>
             <button className={`${styles.submit}`} type="submit" onClick={submitHandler}>Update</button>
           </div>

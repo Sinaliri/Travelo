@@ -31,8 +31,7 @@ const SearchOptions = () => {
     const month=(date.toLocaleString().split("/").join("-").split(",")[0].split("-")[0]);
     const day=(date.toLocaleString().split("/").join("-").split(",")[0].split("-")[1]);
     const truedate=(`${year}-${+month>9 ? month: `0${month}`}-${day}`);
-    // console.log(selectedMaxPrice)
-    
+
     //api search
     Api_search2(
       selectedCity,
@@ -46,37 +45,34 @@ const SearchOptions = () => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-    // console.log(selectedCity.name);
-    // console.log(selectedDestination.name);
-    // console.log(date.toLocaleString().split("/").join("-").split(",")[0]);
-    // console.log(selectedMaxPrice.name);
+
   };
   return (
     <div className={`${style.searchOptions} grid align-items-center`}>
       <div className={`col-12 lg:col-10 grid`}>
-        <div className="col-12 md:col-6 xl:col-3 flex  align-items-center">
-          <span>From</span>
+        <div className="col-12 lg:col-6 xl:col-3 flex  align-items-center">
+          <span style={{width:"100px"}}>From</span>
           <Location />
         </div>
-        <div className="col-12 md:col-6 xl:col-3 flex  align-items-center">
-          <span>To</span>
+        <div className="col-12 lg:col-6 xl:col-3 flex  align-items-center">
+          <span style={{width:"100px"}}>To</span>
           <Destination />
         </div>
-        <div className="col-12 md:col-6 xl:col-3 flex  align-items-center">
-          <span>Time</span>
+        <div className="col-12 lg:col-6 xl:col-3 flex  align-items-center">
+          <span style={{width:"100px"}}>Time</span>
           <Calender />
         </div>
-        <div className="col-12 md:col-6 xl:col-3 flex align-items-center">
-          <span>Price</span>
+        <div className="col-12 lg:col-6 xl:col-3 flex align-items-center">
+          <span style={{width:"100px"}}>Price</span>
           <Price />
         </div>
       </div>
       {/* <div className="lg:col-1"></div> */}
       <div
-        className={`${style.buttonContainer} col-12 lg:col-2 flex justify-content-center align-items-center`}
+        className={`${style.buttonContainer} col-12 lg:col-2 flex justify-content-center align-items-center p-0`}
       >
         <Button
-          className={`${style.resultButton}`}
+          className={`${style.resultButton} px-3`}
           icon="pi pi-check"
           loading={loading}
           onClick={load}
