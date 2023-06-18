@@ -1,17 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
 # Travelo - Programming Project Documentation
 ## Table of Contents
 1. Introduction
@@ -37,7 +23,14 @@ for a shared travel adventure.
 To install and set up the Travelo project on your local machine, follow these steps:1. Clone the project repository from [GitHub URL].
 2. Navigate to the project directory.
 3. Install the required dependencies by running the command: `npm install`.
-4. Start the development server using the command: `npm run dev`.
+4. Start the development server using the command:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 Please ensure that you have Node.js and npm (Node Package Manager) installed on your machine before
 proceeding with the installation.
 ## 4. Usage
@@ -91,7 +84,7 @@ For any questions, suggestions, or issues regarding the Travelo project, please 
 - Ehsanmirmohkam@gmail.com
 - Sina.liri@yahoo.com
 - Amircr7h3@gmail.com
-Feel free to reach out if you have any feedback or require further assistance.
+###Feel free to reach out if you have any feedback or require further assistance.
 ---
 Thank you for choosing the Travelo project. We hope this documentation helps you understand and
 utilize the project effectively, fostering incredible group travel experiences.
